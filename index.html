@@ -41,19 +41,19 @@ body{background:#F2EAD6;color:var(--text);font-family:'Hoefler Text','Palatino L
  <div class="brand"><h1>怒涛</h1><div class="lat mono">FOREXTANK · NEREUS CHART ROOM</div>
   <div class="sub">反过拟合外汇研究鱼缸 — 默认存疑，过八道测深才放行</div></div>
  <div class="spacer"></div>
- <div class="tr mono">CHART No.01 · SNAPSHOT 2026-07-01 00:11<br>7 majors · GBP EUR JPY AUD CAD CHF NZD
+ <div class="tr mono">CHART No.01 · SNAPSHOT 2026-07-01 04:00<br>7 majors · GBP EUR JPY AUD CAD CHF NZD
   <div class="verdict"><span class="v mono">VERDICT: edge unproven — hold</span></div></div>
 </div>
 
 <div class="foot">
  <div class="sound mono">SOUNDINGS · 八道测深戳 &nbsp;<span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>&nbsp; 5/8</div>
- <div class="legend mono"><span><i style="background:#163A52"></i>候选存活 0</span><span><i style="background:#9E3320"></i>判死沉海沟 8</span><span><i style="background:#9A5A18"></i>样本不足未决</span><span>钢笔素描鱼=因子鱼苗·大小∝|夏普|·悬停查看</span></div>
- <div class="ledger mono">账本 K_total=15 · append-only 哈希链 · 只含因子研究数据，零账户登录与真实余额数字 · 真钱实盘始终本人手动</div>
+ <div class="legend mono"><span><i style="background:#163A52"></i>候选存活 0</span><span><i style="background:#9E3320"></i>判死沉海沟 9</span><span><i style="background:#9A5A18"></i>样本不足未决</span><span>钢笔素描鱼=因子鱼苗·大小∝|夏普|·悬停查看</span></div>
+ <div class="ledger mono">账本 K_total=16 · append-only 哈希链 · 只含因子研究数据，零账户登录与真实余额数字 · 真钱实盘始终本人手动</div>
 </div>
 <div id="tip"></div>
 
 <script>
-const FISH=[{"name": "ChanEA 实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量·二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry 利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry·控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}, {"name": "EM carry", "kind": "dead", "sharpe": -0.0098, "oos": 2016, "p": 0.2781, "mdd": -0.3574}];
+const FISH=[{"name": "ChanEA 实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量·二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry 利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry·控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}, {"name": "EM carry", "kind": "dead", "sharpe": -0.0098, "oos": 2016, "p": 0.2781, "mdd": -0.3574}, {"name": "时序趋势CTA", "kind": "dead", "sharpe": -0.488, "oos": 2016, "p": 1.0, "mdd": -0.2131}];
 const cv=document.getElementById('sea'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
 let W,H,DPR;
 function resize(){DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
