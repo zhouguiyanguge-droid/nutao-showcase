@@ -3,102 +3,129 @@
 <meta name="robots" content="noindex,nofollow">
 <title>怒涛 ForexTank · Nereus Chart Room</title>
 <style>
-:root{--bg:#F2EAD6;--surf:#FBF5E6;--prim:#163A52;--acc:#9E3320;--acc2:#9A5A18;--text:#1A2B38;--dim:#4C6072;--depth:#0E4D4D}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);
- font-family:'Hoefler Text','Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Songti SC',serif;
- background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(22,58,82,.06) 31px 32px),
-  repeating-linear-gradient(90deg,transparent 0 31px,rgba(22,58,82,.06) 31px 32px);
- min-height:100vh;line-height:1.5}
+:root{--bg:#F2EAD6;--surf:#FBF5E6;--prim:#163A52;--acc:#9E3320;--acc2:#9A5A18;--text:#1A2B38;--dim:#4C6072}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
+body{background:#F2EAD6;color:var(--text);font-family:'Hoefler Text','Palatino Linotype',Palatino,Georgia,'Songti SC',serif}
 .mono{font-family:'Courier Prime','Courier New',ui-monospace,Menlo,monospace}
-.wrap{max-width:860px;margin:0 auto;padding:28px 22px 60px}
-header{display:flex;align-items:flex-start;gap:18px;border-bottom:1.5px solid var(--prim);padding-bottom:16px}
-header svg{flex:none}
-.brand h1{font-size:38px;font-weight:600;letter-spacing:2px;color:var(--prim);line-height:1}
-.brand .lat{font-size:10px;letter-spacing:2px;color:var(--dim);margin-top:6px}
-.brand .sub{font-size:13px;color:var(--acc2);margin-top:7px;font-style:italic}
-.chartno{margin-left:auto;text-align:right;font-size:10px;color:var(--dim)}
-.verdict{margin:18px 0;border:1.5px solid var(--acc);background:rgba(158,51,32,.05);
- border-radius:0;padding:11px 16px;display:flex;align-items:center;gap:12px}
-.verdict .lab{font-size:10px;letter-spacing:2px;color:var(--acc)}
-.verdict .big{font-size:17px;color:var(--acc);letter-spacing:1px}
-.soundings{display:flex;align-items:center;gap:9px;margin:16px 0}
-.soundings .t{font-size:10px;letter-spacing:1px;color:var(--dim)}
-.stamp{width:20px;height:20px;border-radius:50%;border:1.4px dashed var(--dim);display:inline-block}
-.stamp.on{background:var(--acc);border:1.4px solid var(--acc)}
-h2{font-size:13px;letter-spacing:2px;color:var(--prim);text-transform:uppercase;
- border-bottom:.5px solid rgba(22,58,82,.3);padding-bottom:5px;margin:26px 0 12px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{text-align:left;font-size:10px;letter-spacing:1px;color:var(--dim);padding:5px 8px;border-bottom:.5px solid rgba(22,58,82,.25)}
-td{padding:6px 8px;border-bottom:.5px solid rgba(22,58,82,.12)}
-.num{text-align:right}
-.stat{display:flex;gap:26px;flex-wrap:wrap;margin:6px 0 2px}
-.stat .c .k{font-size:9px;letter-spacing:1px;color:var(--dim)}
-.stat .c .v{font-size:22px;color:var(--prim);font-weight:600}
-ul.grave{list-style:none}
-ul.grave li{font-size:12px;color:var(--text);padding:7px 0 7px 16px;border-left:2px solid var(--acc);
- margin-bottom:6px;background:rgba(158,51,32,.03)}
-.dim{color:var(--dim)}
-.ledger{font-size:11px;color:var(--dim);margin-top:6px}
-.ledger b{color:var(--prim)}
-footer{margin-top:34px;border-top:.5px solid rgba(22,58,82,.3);padding-top:12px;font-size:10px;color:var(--dim);line-height:1.7}
-.pencil{font-style:italic;color:var(--acc2);font-size:11px;margin-top:4px}
-</style></head><body><div class="wrap">
+#sea{position:fixed;inset:0;width:100%;height:100%;display:block}
+.hud{position:fixed;left:0;right:0;top:0;display:flex;align-items:flex-start;gap:14px;padding:14px 18px;z-index:10;pointer-events:none}
+.brand h1{font-size:30px;font-weight:600;letter-spacing:2px;color:var(--prim);line-height:1}
+.brand .lat{font-size:8px;letter-spacing:2px;color:var(--dim);margin-top:4px}
+.brand .sub{font-size:11px;color:var(--acc2);font-style:italic;margin-top:4px}
+.spacer{flex:1}
+.tr{text-align:right;font-size:9px;color:var(--dim);line-height:1.7}
+.verdict{display:inline-block;border:1.4px solid var(--acc);background:rgba(158,51,32,.05);padding:5px 11px;margin-top:5px}
+.verdict .v{font-size:13px;color:var(--acc);letter-spacing:1px}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:11px 18px 14px;z-index:10;pointer-events:none;
+ background:linear-gradient(0deg,rgba(242,234,214,.92),transparent)}
+.sound{display:flex;align-items:center;gap:7px;font-size:9px;letter-spacing:1px;color:var(--dim)}
+.stamp{width:16px;height:16px;border-radius:50%;border:1.3px dashed var(--dim);display:inline-block}
+.stamp.on{background:var(--acc);border:1.3px solid var(--acc)}
+.legend{display:flex;gap:16px;margin-top:7px;font-size:10px;color:var(--dim);flex-wrap:wrap}
+.legend i{width:18px;height:8px;display:inline-block;vertical-align:middle;margin-right:4px;border-radius:2px}
+.ledger{font-size:9px;color:var(--dim);margin-top:5px}
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:30;max-width:230px;
+ background:var(--surf);border:1px solid var(--prim);border-radius:4px;padding:8px 11px;font-size:11px;box-shadow:0 6px 18px rgba(22,58,82,.22)}
+#tip .tn{font-size:13px;color:var(--prim);font-weight:600;margin-bottom:3px}
+#tip .tm{font-family:'Courier New',monospace;font-size:10px;color:var(--dim);line-height:1.5}
+@media(max-width:640px){.brand h1{font-size:22px}.brand .sub{display:none}.legend{font-size:9px;gap:9px}}
+</style></head><body>
+<canvas id="sea"></canvas>
 
-<header>
- <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">
-  <circle cx="31" cy="31" r="28" fill="none" stroke="#163A52" stroke-width="1.3"/>
-  <circle cx="31" cy="31" r="18" fill="none" stroke="#163A52" stroke-width="0.6"/>
-  <g stroke="#163A52" stroke-width="0.6"><line x1="31" y1="3" x2="31" y2="59"/><line x1="3" y1="31" x2="59" y2="31"/>
-   <line x1="12" y1="12" x2="50" y2="50"/><line x1="50" y1="12" x2="12" y2="50"/></g>
-  <path d="M31 6 L35 31 L31 28 L27 31 Z" fill="#9E3320"/><circle cx="31" cy="31" r="3" fill="#9A5A18"/>
- </svg>
+<div class="hud">
+ <svg width="50" height="50" viewBox="0 0 50 50" style="flex:none">
+  <circle cx="25" cy="25" r="22" fill="none" stroke="#163A52" stroke-width="1.2"/>
+  <circle cx="25" cy="25" r="14" fill="none" stroke="#163A52" stroke-width="0.5"/>
+  <g stroke="#163A52" stroke-width="0.5"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="10" y1="10" x2="40" y2="40"/><line x1="40" y1="10" x2="10" y2="40"/></g>
+  <path d="M25 5 L28 25 L25 22 L22 25 Z" fill="#9E3320"/><circle cx="25" cy="25" r="2.2" fill="#9A5A18"/></svg>
  <div class="brand"><h1>怒涛</h1><div class="lat mono">FOREXTANK · NEREUS CHART ROOM</div>
   <div class="sub">反过拟合外汇研究鱼缸 — 默认存疑，过八道测深才放行</div></div>
- <div class="chartno mono">CHART No.01<br>SNAPSHOT 2026-06-30 23:35<br>GBPUSD·EUR·JPY·AUD·CAD·CHF·NZD</div>
-</header>
-
-<div class="verdict"><span class="lab mono">VERDICT</span>
- <span class="big mono">edge unproven — hold</span></div>
-
-<div class="soundings"><span class="t mono">SOUNDINGS · 八道测深戳</span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
- <span class="t mono">5/8</span></div>
-
-<div class="stat">
- <div class="c"><div class="k mono">活鱼苗 / 投喂</div><div class="v">0 / 12</div></div>
- <div class="c"><div class="k mono">搁浅判死</div><div class="v">5</div></div>
- <div class="c"><div class="k mono">K_total 试验账</div><div class="v">13</div></div>
+ <div class="spacer"></div>
+ <div class="tr mono">CHART No.01 · SNAPSHOT 2026-06-30 23:53<br>7 majors · GBP EUR JPY AUD CAD CHF NZD
+  <div class="verdict"><span class="v mono">VERDICT: edge unproven — hold</span></div></div>
 </div>
-<div class="pencil">铅笔边注：纯价格因子（无利差）在 FX 横截面扣点差+swap 后多半归零；carry 需利率数据，下一代投喂。</div>
 
-<h2>航海日志 · 鱼缸竞争台</h2>
-<table><thead><tr><th>鱼苗（因子）</th><th class="num">OOS夏普</th><th class="num">OOS样本</th><th class="num">null_p</th><th>测深裁决</th></tr></thead>
-<tbody>
-<tr><td class="mono">momentum_v0_gbpusd_daily</td><td class="mono num">0.4211</td><td class="mono num">5</td><td class="mono num">0.2259</td><td class="mono" style="color:#9A5A18">◌ 未决</td></tr>
-<tr><td class="mono">xs_lowvol_cycle1_7majors</td><td class="mono num">-0.561</td><td class="mono num">2016</td><td class="mono num">0.005</td><td class="mono" style="color:#9E3320">✕ 判死</td></tr>
-<tr><td class="mono">xs_momentum_v1_7majors</td><td class="mono num">-0.8823</td><td class="mono num">2016</td><td class="mono num">0.0033</td><td class="mono" style="color:#9E3320">✕ 判死</td></tr>
-<tr><td class="mono">xs_momentum_cycle1_7majors</td><td class="mono num">-0.8823</td><td class="mono num">2016</td><td class="mono num">0.005</td><td class="mono" style="color:#9E3320">✕ 判死</td></tr>
-<tr><td class="mono">xs_reversal_cycle1_7majors</td><td class="mono num">-0.8911</td><td class="mono num">2016</td><td class="mono num">0.005</td><td class="mono" style="color:#9E3320">✕ 判死</td></tr>
-<tr><td class="mono">momentum_v0_correction</td><td class="mono num">—</td><td class="mono num">—</td><td class="mono num">—</td><td class="mono" style="color:#9A5A18">◌ 未决</td></tr>
-</tbody></table>
+<div class="foot">
+ <div class="sound mono">SOUNDINGS · 八道测深戳 &nbsp;<span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>&nbsp; 5/8</div>
+ <div class="legend mono"><span><i style="background:#163A52"></i>候选存活 0</span><span><i style="background:#9E3320"></i>判死沉海沟 7</span><span><i style="background:#9A5A18"></i>样本不足未决</span><span>钢笔素描鱼=因子鱼苗·大小∝|夏普|·悬停查看</span></div>
+ <div class="ledger mono">账本 K_total=14 · append-only 哈希链 · 只含因子研究数据，零账户登录与真实余额数字 · 真钱实盘始终本人手动</div>
+</div>
+<div id="tip"></div>
 
-<h2>搁浅标本 · 墓地</h2>
-<ul class="grave">
-<li>[信号名 + 参数] 死于 G{n}（门禁名）。死因：{数字}。{日期}。trial line_hash: {…}</li>
-<li>[ChanEA `current_v124` 实盘配置 · GBPUSD/EURUSD/USDJPY M5] 死于 G2（最小样本）+ G8（forward OOS）。死因：真实成交 n=44、PF=0.46、PnL=−$53、最大连亏 8；实盘配置自评 medPF=0.46、181 次重评 0% 为正；n=44&lt;60 不足以确认 edge。数据窥探：69 独立假设样本内择优，最优存活者 `indicator_min2_h03_04_1…</li>
-<li>[momentum · GBPUSD 日频] 死于 G3/G8 【撤回 · 非判死】 首跑误判:窗口 train=180 &gt; 数据 88 根 → walk-forward 空 OOS(n_trades=0),被错写成&quot;判死/无 edge&quot;。重跑(train=40/test=12)后 OOS夏普=0.42、n_trades=5 —— 样本严重不足(n&lt;60),未决,移出墓地。诚实留痕不静默删。2026-06-30。</li>
-<li>[FX横截面momentum · 7主要对 · lookback∈[20, 60, 120, 250] · 多空各2] 死于 G3/G8。死因:OOS夏普=-0.882(OOS2016天),打不赢随机多空null(经验p=0.003),扣真实点差+swap。美元中性beta=-0.05。2026-06-30。trial line_hash: 4a0ca23ca862128e…</li>
-<li>[FX横截面 momentum · 7主要对 · lb∈[20, 60, 120, 250] · 多空各2] 死于 G8。死因:OOS夏普=-0.882(2016天),扣真实成本后虽打赢null但绝对夏普&lt;0(p=0.005)。2026-06-30。trial line_hash: 911e3558c32bdb33…</li>
-<li>[FX横截面 reversal · 7主要对 · lb∈[1, 3, 5, 10] · 多空各2] 死于 G8。死因:OOS夏普=-0.891(2016天),扣真实成本后虽打赢null但绝对夏普&lt;0(p=0.005)。2026-06-30。trial line_hash: d36cabaaa01c77e2…</li>
-<li>[FX横截面 lowvol · 7主要对 · lb∈[20, 60, 120] · 多空各2] 死于 G8。死因:OOS夏普=-0.561(2016天),扣真实成本后虽打赢null但绝对夏普&lt;0(p=0.005)。2026-06-30。trial line_hash: 6be0553fe32652bf…</li>
-<li>[FX carry · 7主要对 · lag∈[42, 63, 84] · 多空各2] 死于 G8。死因:OOS夏普=-0.609(1890天),回撤-33%(carry crash),扣真实成本后绝对夏普&lt;0。2026-06-30。trial line_hash: a3e5e8cb5ff43f53…</li>
-</ul>
+<script>
+const FISH=[{"name": "ChanEA 实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量·二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry 利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry·控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}];
+const cv=document.getElementById('sea'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
+let W,H,DPR;
+function resize(){DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+window.addEventListener('resize',resize);resize();
+const COL={alive:'#163A52',dead:'#9E3320',pending:'#9A5A18',shipwreck:'#5a3a20'};
+function rnd(a,b){return a+Math.random()*(b-a);}
+// 每条鱼一个体:按 kind 决定泳层(候选中上、未决中、判死沉海沟底)
+const sink=()=>H*0.74; // 海沟带顶
+const fishes=FISH.map((f,i)=>{
+ const big=f.sharpe==null?22:Math.max(11,Math.min(30,14+Math.abs(f.sharpe)*14));
+ const band=f.kind==='alive'?rnd(0.28,0.45):f.kind==='pending'?rnd(0.42,0.6):rnd(0.78,0.93);
+ return {f,x:rnd(0.1,0.9)*W||120,y:band*H,vx:(f.kind==='dead'||f.kind==='shipwreck')?rnd(0.15,0.4):rnd(0.4,1.0),
+   dir:Math.random()<0.5?1:-1,ph:Math.random()*6.28,size:big,band:band,bob:rnd(0.6,1.4)};
+});
+let mx=-1,my=-1;
+cv.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+cv.addEventListener('mouseleave',()=>{mx=-1;my=-1;tip.style.opacity=0;});
 
-<div class="ledger mono">账本指纹：K_total=<b>13</b> · append-only 哈希链 · 末行 line_hash <b>a3e5e8cb5ff43f53…</b></div>
-
-<footer>
- 怒涛 ForexTank 是研究/审计鱼缸。所有结论为 paper/backtest，<b>绝非 live-ready</b>；只含因子研究数据，不含任何账户登录或真实余额数字。
- 真钱实盘下单始终由本人手动。本页内容随鱼缸数据快照更新，链接不变。<br>
- 视觉「怒涛·诚实海图房」— 与 A股姊妹项目「天演」明显区分。
-</footer>
-</div></body></html>
+function drawBg(){
+ ctx.fillStyle='#F2EAD6';ctx.fillRect(0,0,W,H);
+ // 经纬网格
+ ctx.strokeStyle='rgba(22,58,82,.07)';ctx.lineWidth=1;
+ for(let x=0;x<W;x+=46){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+ for(let y=0;y<H;y+=46){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+ // 等深线弧
+ ctx.strokeStyle='rgba(22,58,82,.13)';ctx.lineWidth=1;
+ for(let k=1;k<=3;k++){ctx.beginPath();for(let x=0;x<=W;x+=8){const y=H*(0.2*k)+Math.sin(x/180+k)*14;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();}
+ // 海沟(墓地带)
+ ctx.fillStyle='rgba(22,58,82,.06)';ctx.fillRect(0,sink(),W,H-sink());
+ ctx.strokeStyle='rgba(158,51,32,.35)';ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(0,sink());ctx.lineTo(W,sink());ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle='rgba(158,51,32,.5)';ctx.font="10px 'Courier New',monospace";ctx.fillText('— GRAVEYARD TRENCH · 搁浅标本海沟 —',16,sink()+15);
+}
+function drawFish(o,t){
+ const f=o.f,dead=f.kind==='dead'||f.kind==='shipwreck';
+ ctx.save();ctx.translate(o.x,o.y+Math.sin(t/600*o.bob+o.ph)*4);ctx.scale(o.dir,dead?-1:1);
+ const s=o.size,col=COL[f.kind];
+ ctx.strokeStyle=col;ctx.fillStyle='rgba(0,0,0,0)';ctx.lineWidth=1.3;ctx.globalAlpha=f.kind==='pending'?0.6:0.95;
+ // 身体(博物图鉴椭圆)
+ ctx.beginPath();ctx.ellipse(0,0,s,s*0.5,0,0,6.2832);ctx.stroke();
+ // 尾(摆动)
+ const sw=Math.sin(t/180+o.ph)*s*0.25;
+ ctx.beginPath();ctx.moveTo(-s*0.9,0);ctx.lineTo(-s*1.5,-s*0.4+sw);ctx.lineTo(-s*1.5,s*0.4+sw);ctx.closePath();ctx.stroke();
+ // 背鳍/腹鳍
+ ctx.beginPath();ctx.moveTo(s*0.1,-s*0.5);ctx.lineTo(-s*0.2,-s*0.85);ctx.lineTo(-s*0.45,-s*0.5);ctx.stroke();
+ // 鱼身测深细线(解剖/海图感)
+ ctx.lineWidth=0.6;for(let k=-2;k<=2;k++){ctx.beginPath();ctx.moveTo(s*0.55,k*s*0.13);ctx.lineTo(-s*0.4,k*s*0.13);ctx.stroke();}
+ // 眼
+ ctx.lineWidth=1.1;ctx.beginPath();ctx.arc(s*0.55,-s*0.12,s*0.09,0,6.2832);ctx.stroke();
+ ctx.fillStyle=col;ctx.beginPath();ctx.arc(s*0.55,-s*0.12,s*0.04,0,6.2832);ctx.fill();
+ // 判死叉号
+ if(dead){ctx.strokeStyle=col;ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(s*0.45,-s*0.25);ctx.lineTo(s*0.65,0.02);ctx.moveTo(s*0.65,-s*0.25);ctx.lineTo(s*0.45,0.02);ctx.stroke();}
+ ctx.restore();ctx.globalAlpha=1;
+ // 标签
+ ctx.fillStyle=col;ctx.font="11px 'Palatino Linotype',Palatino,serif";ctx.textAlign='center';
+ ctx.fillText(f.name,o.x,o.y+o.size*0.5+15);ctx.textAlign='left';
+}
+function tick(t){
+ drawBg();let hover=null;
+ for(const o of fishes){
+  o.x+=o.dir*o.vx; if(o.x>W-20){o.dir=-1;} if(o.x<20){o.dir=1;}
+  const tgt=o.band*H; o.y+=(tgt-o.y)*0.01;
+  drawFish(o,t);
+  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.size*1.3)hover=o;
+ }
+ if(hover){const f=hover.f;
+  tip.innerHTML='<div class="tn">'+f.name+'</div><div class="tm">'+
+   (f.sharpe==null?('真账户体检 · '+(f.note||'')+(f.pf!=null?'<br>真成交 PF='+f.pf:'')):
+    ('样本外夏普 '+f.sharpe+'<br>OOS 样本 '+f.oos+(f.p!=null?'<br>打赢null p='+f.p:'')+(f.mdd!=null?'<br>回撤 '+(f.mdd*100).toFixed(0)+'%':'')))+
+   '<br>裁决：'+(f.kind==='alive'?'★ 候选存活':f.kind==='pending'?'◌ 样本不足未决':'✕ 判死沉海沟')+'</div>';
+  tip.style.left=Math.min(mx+14,W-240)+'px';tip.style.top=(my+14)+'px';tip.style.opacity=1;
+ } else tip.style.opacity=0;
+ requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script></body></html>
