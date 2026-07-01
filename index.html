@@ -1,80 +1,62 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>怒涛 ForexTank · Nereus Chart Room</title>
+<title>怒涛 ForexTank · 活鱼苗池</title>
 <style>
-:root{--bg:#EFE4C4;--surf:#FBF6E9;--prim:#16324a;--ink:#0f2333;--acc:#8f2c1e;--acc2:#8a5a1c;
- --dim:#5b6f7c;--gold:#a9863a}
+:root{--bg:#EFE4C4;--surf:#FBF6E9;--prim:#16324a;--ink:#0f2333;--acc:#8f2c1e;--acc2:#8a5a1c;--dim:#5b6f7c}
 *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
 body{background:var(--bg);color:var(--ink);font-family:'Hoefler Text','Palatino Linotype',Palatino,Georgia,'Songti SC',serif}
 .mono{font-family:'Courier Prime','Courier New',ui-monospace,Menlo,monospace}
 #sea{position:fixed;inset:0;width:100%;height:100%;display:block}
-.card{background:var(--surf);border:1px solid rgba(22,50,74,.38);
- box-shadow:inset 0 0 0 1px rgba(255,252,240,.6),0 8px 20px rgba(22,50,74,.16);}
-.hud{position:fixed;left:14px;right:14px;top:12px;z-index:10;display:flex;align-items:center;
- gap:16px;padding:10px 18px;pointer-events:none}
-.brandmark{flex:none}
-.brand h1{font-size:27px;font-weight:600;letter-spacing:3px;color:var(--prim);line-height:1}
+.card{background:var(--surf);border:1px solid rgba(22,50,74,.34);
+ box-shadow:inset 0 0 0 1px rgba(255,252,240,.6),0 8px 20px rgba(22,50,74,.15)}
+.hud{position:fixed;left:14px;right:14px;top:12px;z-index:10;display:flex;align-items:center;gap:15px;padding:10px 18px;pointer-events:none}
+.brand h1{font-size:26px;font-weight:600;letter-spacing:3px;color:var(--prim);line-height:1}
 .brand .lat{font-size:8px;letter-spacing:2px;color:var(--dim);margin-top:5px}
-.rule{width:100%;height:1px;background:linear-gradient(90deg,var(--prim),transparent 70%);margin-top:5px;opacity:.4}
 .brand .sub{font-size:10.5px;color:var(--acc2);font-style:italic;margin-top:5px}
 .spacer{flex:1}
 .meta{text-align:right;font-size:9px;color:var(--dim);line-height:1.8}
-.seal{display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:4px 12px 4px 5px;
- background:rgba(143,44,30,.06);border:1px solid rgba(143,44,30,.4)}
-.seal .dot{width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b8492f,#7a2216 78%);
- box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
-.seal .v{font-size:12px;color:var(--acc);letter-spacing:.5px}
-.foot{position:fixed;left:14px;right:14px;bottom:12px;z-index:10;padding:11px 18px;
- display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.frow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:10px;color:var(--dim)}
-.frow.sep{border-top:1px solid rgba(22,50,74,.16);padding-top:8px}
-.swimg{width:22px;height:14px;display:inline-block;vertical-align:middle;margin-right:6px}
-.sound{display:flex;align-items:center;gap:6px}
-.stamp{width:15px;height:15px;border-radius:50%;border:1.3px dashed var(--dim);display:inline-block}
-.stamp.on{background:var(--acc);border:1.3px solid var(--acc)}
+.seal{display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:4px 12px 4px 5px;background:rgba(143,44,30,.06);border:1px solid rgba(143,44,30,.38)}
+.seal .dot{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b8492f,#7a2216 78%)}
+.seal .v{font-size:11.5px;color:var(--acc);letter-spacing:.5px}
+.foot{position:fixed;left:14px;right:14px;bottom:12px;z-index:10;padding:10px 18px;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.frow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:10px;color:var(--dim)}
+.frow.sep{border-top:1px solid rgba(22,50,74,.15);padding-top:7px}
+.chip{display:inline-flex;align-items:center;gap:5px}
+.sw{width:13px;height:13px;border-radius:50%;display:inline-block}
 .k{color:var(--prim);font-weight:600}
 #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:30;max-width:220px;
- background:var(--surf);border:1px solid var(--prim);border-left:3px solid var(--acc);padding:8px 12px;
- font-size:11px;box-shadow:0 8px 22px rgba(22,50,74,.26)}
+ background:var(--surf);border:1px solid var(--prim);border-left:3px solid var(--acc);padding:8px 12px;font-size:11px;box-shadow:0 8px 22px rgba(22,50,74,.26)}
 #tip .tn{font-size:13px;color:var(--prim);font-weight:600;margin-bottom:4px}
 #tip .tm{font-family:'Courier New',monospace;font-size:10px;color:var(--dim);line-height:1.55}
-@media(max-width:680px){.brand h1{font-size:20px}.brand .sub{display:none}.meta{display:none}
- .frow{font-size:8.5px;gap:12px}}
+@media(max-width:680px){.brand h1{font-size:19px}.brand .sub{display:none}.meta{display:none}.frow{font-size:8.5px;gap:11px}}
 </style></head><body>
 <canvas id="sea"></canvas>
 
 <div class="hud card">
- <svg class="brandmark" width="46" height="46" viewBox="0 0 46 46">
-  <circle cx="23" cy="23" r="20" fill="none" stroke="#16324a" stroke-width="1.1"/>
-  <circle cx="23" cy="23" r="12.5" fill="none" stroke="#16324a" stroke-width="0.5"/>
-  <g stroke="#16324a" stroke-width="0.5"><line x1="23" y1="4" x2="23" y2="42"/><line x1="4" y1="23" x2="42" y2="23"/>
-   <line x1="9.5" y1="9.5" x2="36.5" y2="36.5"/><line x1="36.5" y1="9.5" x2="9.5" y2="36.5"/></g>
-  <path d="M23 6 L26 23 L23 20.3 L20 23 Z" fill="#8f2c1e"/><circle cx="23" cy="23" r="2" fill="#8a5a1c"/>
- </svg>
+ <svg width="44" height="44" viewBox="0 0 44 44" style="flex:none">
+  <circle cx="22" cy="22" r="19" fill="none" stroke="#16324a" stroke-width="1.1"/>
+  <circle cx="22" cy="22" r="12" fill="none" stroke="#16324a" stroke-width="0.5"/>
+  <g stroke="#16324a" stroke-width="0.5"><line x1="22" y1="4" x2="22" y2="40"/><line x1="4" y1="22" x2="40" y2="22"/><line x1="9" y1="9" x2="35" y2="35"/><line x1="35" y1="9" x2="9" y2="35"/></g>
+  <path d="M22 6 L25 22 L22 19.5 L19 22 Z" fill="#8f2c1e"/><circle cx="22" cy="22" r="1.9" fill="#8a5a1c"/></svg>
  <div class="brand"><h1>怒 涛</h1><div class="lat mono">FOREXTANK · NEREUS CHART ROOM</div>
-  <div class="rule"></div><div class="sub">反过拟合外汇研究鱼缸 — 默认存疑，过八道测深才放行</div></div>
+  <div class="sub">永不收缸的活鱼苗池 — 世界在变，假说持续孵化、竞争、沉淀</div></div>
  <div class="spacer"></div>
- <div class="meta mono">CHART No.01 · SNAPSHOT 2026-07-02 00:50<br>7 majors + 4 EM · G10 CTA carry momentum
-  <div class="seal"><span class="dot"></span><span class="v mono">VERDICT&nbsp;edge unproven — hold</span></div>
- </div>
+ <div class="meta mono">CHART No.01 · SNAPSHOT 2026-07-02 01:11<br>孵化↗竞争↗沉淀 · 循环 5 代
+  <div class="seal"><span class="dot"></span><span class="v mono">VERDICT edge unproven — hold</span></div></div>
 </div>
 
 <div class="foot card">
  <div class="frow">
-  <span><img class="swimg" id="swAlive"> 候选存活 <b class="k">0</b></span>
-  <span><img class="swimg" id="swDead"> 判死沉海沟 <b class="k">16</b></span>
-  <span><img class="swimg" id="swPending"> 样本不足未决 <b class="k">1</b></span>
-  <span class="mono">鱼形=因子鱼苗 · 大小∝|夏普| · 悬停查看细节</span>
+  <span class="chip"><span class="sw" style="background:#16324a"></span>存活候选 <b class="k">0</b>（栖息区,当前空缺）</span>
+  <span class="chip"><span class="sw" style="background:#8a5a1c"></span>未决 <b class="k">1</b></span>
+  <span class="chip"><span class="sw" style="background:#9a8a6a"></span>已判死→化石沉积 <b class="k">16</b></span>
+  <span class="mono">悬停查看每条假说的夏普/裁决</span>
  </div>
  <div class="frow sep">
-  <div class="sound mono">SOUNDINGS·八道测深戳&nbsp;
-   <span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span>
-   <span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span>
-   <span class="stamp"></span><span class="stamp"></span>&nbsp;5/8</div>
-  <span class="mono">鱼缸自循环 <b class="k">5</b> 代运转 · 纸面账本 <b class="k">1</b> 条</span>
   <span class="mono">K_total=<b class="k">45</b> append-only哈希链</span>
-  <span class="mono" style="color:var(--dim)">只含因子研究数据·零账户数字·真钱实盘本人手动</span>
+  <span class="mono" style="color:var(--acc2)">鱼苗池巡检 第1轮 · 2026-07-02 · 近3年窗重测5条 · 复活0 · 最强体制漂移 carry lag63+0.36</span>
+  <span class="mono" style="color:var(--dim)">世界在变→滚动近窗重测,过去判死可复活重竞;只含因子研究数据·零账户数字·真钱本人手动</span>
  </div>
 </div>
 <div id="tip"></div>
@@ -82,260 +64,182 @@ body{background:var(--bg);color:var(--ink);font-family:'Hoefler Text','Palatino 
 <script>
 const FISH=[{"name": "ChanEA实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}, {"name": "EM carry", "kind": "dead", "sharpe": -0.0098, "oos": 2016, "p": 0.0066, "mdd": -0.3574}, {"name": "时序趋势CTA", "kind": "dead", "sharpe": -0.488, "oos": 2016, "p": 1.0, "mdd": -0.2131}, {"name": "海龟通道突破", "kind": "dead", "sharpe": -0.5072, "oos": 2016, "p": 0.0083, "mdd": -0.2177}, {"name": "双均线交叉", "kind": "dead", "sharpe": -0.2159, "oos": 2016, "p": 0.0083, "mdd": -0.1795}, {"name": "跳月动量", "kind": "dead", "sharpe": -0.5972, "oos": 2016, "p": 0.0083, "mdd": -0.2504}, {"name": "子润·通道波段", "kind": "dead", "sharpe": -0.2333, "oos": 2016, "p": 0.0066, "mdd": -0.165}, {"name": "子润·Keltne…", "kind": "dead", "sharpe": -0.2722, "oos": 2016, "p": 0.001, "mdd": -0.1319}, {"name": "子润·波动通道突破", "kind": "dead", "sharpe": -0.1808, "oos": 2016, "p": 0.001, "mdd": -0.1201}, {"name": "REER价值", "kind": "dead", "sharpe": -0.5167, "oos": 2016, "p": 0.005, "mdd": -0.2818}];
 const cv=document.getElementById('sea'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
-const INK='#16324a', ACC='#8f2c1e', OCH='#8a5a1c', DIM='#5b6f7c';
-const COL={alive:INK,dead:ACC,pending:OCH,shipwreck:'#4a3624'};
-let W,H,DPR,bg,grain=[],kelp=[],bubbles=[];
+const INK='#16324a', ACC='#8f2c1e', OCH='#8a5a1c', DIM='#5b6f7c', FOSSIL='#9a8a6a';
+let W,H,DPR,bg,t0=0;
 function rnd(a,b){return a+Math.random()*(b-a);}
-function sinkY(){return H*0.585;}
+// 泳层
+const surfaceY=()=>H*0.20, liveTop=()=>H*0.24, liveBot=()=>H*0.44;
+const compTop=()=>H*0.46, compBot=()=>H*0.60, sedTop=()=>H*0.64;
+const hatchX=()=>Math.max(64,W*0.09), hatchY=()=>H*0.40;
 
-// ---- 通用平滑闭合路径:经过控制点的圆润轮廓(用于鱼身/尾鳍/藻叶) ----
-function smoothClosed(c,pts){
- const n=pts.length,mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
- let m0=mid(pts[n-1],pts[0]); c.moveTo(m0[0],m0[1]);
- for(let i=0;i<n;i++){const cur=pts[i],nxt=pts[(i+1)%n],m=mid(cur,nxt);c.quadraticCurveTo(cur[0],cur[1],m[0],m[1]);}
-}
-const BODY=[[1.05,0],[0.90,-0.20],[0.52,-0.36],[0.08,-0.47],[-0.32,-0.43],[-0.70,-0.24],[-0.93,-0.09],
- [-1.02,0],[-0.93,0.09],[-0.70,0.24],[-0.32,0.40],[0.08,0.43],[0.52,0.31],[0.90,0.14]];
+// ---- 平滑闭合鱼形 ----
+const BODY=[[1.05,0],[0.88,-0.22],[0.45,-0.40],[-0.05,-0.46],[-0.60,-0.30],[-0.92,-0.10],
+ [-1.0,0],[-0.92,0.10],[-0.60,0.30],[-0.05,0.42],[0.45,0.34],[0.88,0.16]];
+function smoothClosed(c,pts){const n=pts.length,mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+ let m0=mid(pts[n-1],pts[0]);c.moveTo(m0[0],m0[1]);
+ for(let i=0;i<n;i++){const cur=pts[i],nx=pts[(i+1)%n],m=mid(cur,nx);c.quadraticCurveTo(cur[0],cur[1],m[0],m[1]);}}
 
-function paintFish(c,s,kind,settle){
- const ink=COL[kind]==='#4a3624'?'#4a3624':INK, tone=COL[kind], faded=(kind==='pending');
- c.save();
- // 阴影(纸感投影,非发光)
- c.shadowColor='rgba(22,50,74,.18)';c.shadowBlur=6;c.shadowOffsetY=3;
+function drawFishShape(c,s,stroke,fill,alpha,tailPhase){
+ c.globalAlpha=alpha;
  c.beginPath();smoothClosed(c,BODY.map(p=>[p[0]*s,p[1]*s]));
- c.fillStyle=tone+'1c';c.fill();
- c.shadowColor='transparent';
- if(faded)c.setLineDash([s*0.09,s*0.07]);
- c.lineWidth=Math.max(1,s*0.055);c.strokeStyle=ink;c.globalAlpha=faded?0.72:1;c.stroke();
- c.setLineDash([]);
- // 背部明暗雕版短线(仅背脊上部)
- c.save();c.beginPath();smoothClosed(c,BODY.map(p=>[p[0]*s,p[1]*s]));c.clip();
- c.strokeStyle=ink;c.globalAlpha=0.22;c.lineWidth=Math.max(0.5,s*0.02);
- for(let i=0;i<6;i++){const x0=(0.62-i*0.16)*s;c.beginPath();c.moveTo(x0,-0.44*s);c.lineTo(x0-0.10*s,-0.08*s);c.stroke();}
- // 鳞纹(中段,行列错位小弧)
- c.globalAlpha=0.30;c.lineWidth=Math.max(0.5,s*0.018);
- for(let row=-1;row<=1;row++){const yy=row*0.16*s;
-  for(let cx=-0.55;cx<0.45;cx+=0.135){const xx=cx*s+(row%2?0.06*s:0);
-   c.beginPath();c.arc(xx,yy,s*0.075,Math.PI*0.15,Math.PI*0.85);c.stroke();}}
- c.restore();
- // 鳃线
- c.globalAlpha=faded?0.6:0.85;c.lineWidth=Math.max(1,s*0.045);c.strokeStyle=ink;
- c.beginPath();c.moveTo(0.60*s,-0.14*s);c.quadraticCurveTo(0.70*s,0,0.60*s,0.18*s);c.stroke();
- // 胸鳍
- c.beginPath();c.moveTo(0.38*s,0.10*s);c.quadraticCurveTo(0.14*s,0.30*s,0.06*s,0.52*s);
- c.quadraticCurveTo(0.30*s,0.38*s,0.44*s,0.20*s);c.closePath();
- c.fillStyle=tone+'26';c.fill();c.lineWidth=Math.max(0.8,s*0.035);c.stroke();
- // 背鳍(帆状)
- c.beginPath();c.moveTo(-0.36*s,-0.40*s);c.quadraticCurveTo(-0.30*s,-0.92*s,-0.06*s,-0.98*s);
- c.quadraticCurveTo(0.02*s,-0.60*s,0.06*s,-0.40*s);c.closePath();
- c.fillStyle=tone+'26';c.fill();c.stroke();
- c.globalAlpha*=0.7;c.lineWidth=Math.max(0.5,s*0.02);
- c.beginPath();c.moveTo(-0.30*s,-0.42*s);c.lineTo(-0.14*s,-0.90*s);c.stroke();
- c.beginPath();c.moveTo(-0.14*s,-0.42*s);c.lineTo(-0.02*s,-0.85*s);c.stroke();
- c.globalAlpha=faded?0.6:0.85;
- // 尾鳍(叉形,略摆动由外部旋转体现)
- c.beginPath();c.moveTo(-0.98*s,0);c.quadraticCurveTo(-1.25*s,-0.10*s,-1.52*s,-0.44*s);
- c.quadraticCurveTo(-1.20*s,-0.16*s,-1.05*s,-0.02*s);c.closePath();c.fillStyle=tone+'26';c.fill();c.stroke();
- c.beginPath();c.moveTo(-0.98*s,0);c.quadraticCurveTo(-1.25*s,0.10*s,-1.52*s,0.44*s);
- c.quadraticCurveTo(-1.20*s,0.16*s,-1.05*s,0.02*s);c.closePath();c.fill();c.stroke();
+ if(fill){c.fillStyle=fill;c.fill();}
+ c.lineWidth=Math.max(0.8,s*0.05);c.strokeStyle=stroke;c.stroke();
+ // 尾
+ const sw=Math.sin(tailPhase)*s*0.22;
+ c.beginPath();c.moveTo(-0.95*s,0);c.lineTo(-1.42*s,-0.36*s+sw);c.lineTo(-1.42*s,0.36*s+sw);c.closePath();
+ if(fill){c.fillStyle=fill;c.fill();}c.stroke();
+ // 背鳍
+ c.beginPath();c.moveTo(-0.30*s,-0.42*s);c.quadraticCurveTo(-0.18*s,-0.82*s,0.02*s,-0.44*s);c.stroke();
  // 眼
- c.globalAlpha=1;c.fillStyle='rgba(255,252,240,.9)';c.beginPath();c.arc(0.66*s,-0.15*s,0.10*s,0,6.2832);c.fill();
- c.lineWidth=Math.max(0.8,s*0.035);c.strokeStyle=ink;c.stroke();
- c.fillStyle=ink;c.beginPath();c.arc(0.685*s,-0.15*s,0.045*s,0,6.2832);c.fill();
- c.fillStyle='rgba(255,252,240,.95)';c.beginPath();c.arc(0.70*s,-0.185*s,0.018*s,0,6.2832);c.fill();
- if(kind==='dead'){c.strokeStyle=ACC;c.lineWidth=Math.max(1,s*0.05);
-  c.beginPath();c.moveTo(0.44*s,-0.30*s);c.lineTo(0.66*s,0.02*s);c.moveTo(0.66*s,-0.30*s);c.lineTo(0.44*s,0.02*s);c.stroke();}
- c.restore();
-}
-
-function paintWreck(c,s){
- const HULL=[[1.15,0.05],[0.85,-0.30],[0.30,-0.34],[-0.05,-0.20],[-0.45,-0.10],[-0.85,-0.06],
-  [-0.95,0.20],[-0.55,0.52],[0.15,0.56],[0.65,0.44],[1.02,0.24]];
- const dk='#241a10';
- c.save();c.shadowColor='rgba(22,50,74,.28)';c.shadowBlur=8;c.shadowOffsetY=4;
- // 搁浅淤沙(垫在船体下,加强触地感)
- c.beginPath();c.ellipse(0,0.56*s,0.95*s,0.14*s,0,0,6.2832);c.fillStyle='rgba(22,50,74,.14)';c.fill();
- c.beginPath();smoothClosed(c,HULL.map(p=>[p[0]*s,p[1]*s]));c.fillStyle='rgba(246,239,216,.20)';c.fill();
- c.shadowColor='transparent';c.lineWidth=s*0.055;c.strokeStyle=dk;c.stroke();
- c.globalAlpha=.55;c.lineWidth=s*0.02;
- for(let i=0;i<3;i++){c.beginPath();c.moveTo(-0.7*s+i*0.55*s,-0.02*s);c.lineTo(-0.7*s+i*0.55*s,0.42*s);c.stroke();}
+ c.globalAlpha=alpha;c.fillStyle=stroke;c.beginPath();c.arc(0.60*s,-0.10*s,s*0.06,0,6.2832);c.fill();
  c.globalAlpha=1;
- [[0.55,0.10],[0.15,0.16],[-0.25,0.20]].forEach(p=>{c.beginPath();c.arc(p[0]*s,p[1]*s,0.06*s,0,6.2832);
-  c.fillStyle='rgba(22,50,74,.85)';c.fill();c.lineWidth=s*0.022;c.strokeStyle=dk;c.stroke();});
- // 断桅
- c.beginPath();c.moveTo(-0.15*s,-0.22*s);c.lineTo(-0.58*s,-1.42*s);c.lineWidth=s*0.055;c.strokeStyle=dk;c.stroke();
- c.beginPath();c.moveTo(-0.58*s,-1.42*s);c.quadraticCurveTo(-0.22*s,-1.14*s,-0.32*s,-0.78*s);
- c.quadraticCurveTo(-0.53*s,-0.99*s,-0.58*s,-1.42*s);c.closePath();
- c.fillStyle='rgba(143,44,30,.30)';c.fill();c.strokeStyle='#8f2c1e';c.lineWidth=s*0.03;c.stroke();
- c.restore();
 }
 
-function initFish(){
- return FISH.map(f=>{
-  const size=f.kind==='shipwreck'?34:Math.max(13,Math.min(27,13+Math.abs(f.sharpe||0)*15));
-  return {f,size,bandFrac:Math.random(),phase:Math.random()*6.28,swayA:rnd(0.6,1.3),
-   dir:Math.random()<0.5?1:-1,vx:rnd(0.22,0.5),x:0,y:0,homeX:0,homeY:0,slotHalf:40,settle:false};
- });
-}
-let fishes=initFish();
-
-function layout(){
- const dead=fishes.filter(o=>o.f.kind==='dead'||o.f.kind==='shipwreck');
- const live=fishes.filter(o=>o.f.kind==='alive'||o.f.kind==='pending');
- const footEl=document.querySelector('.foot'), hudEl=document.querySelector('.hud');
- const footReserve=(footEl?footEl.offsetHeight:90)+26;
- const headReserve=(hudEl?hudEl.offsetHeight:90)+28;
- const pad=Math.min(56,W*0.06), top=sinkY()+42, cell=Math.max(92,Math.min(148,W/4.6));
- const avail=Math.max(cell,W-2*pad);
- const cols=Math.max(1,Math.min(dead.length||1,Math.floor(avail/cell)));
+// ---- 化石沉积层的固定标本(判死的鱼,地层排列) ----
+let fossils=[];
+function layoutFossils(){
+ const dead=FISH.filter(f=>f.kind==='dead'||f.kind==='shipwreck');
+ const pad=W*0.06, top=sedTop()+30, cols=Math.max(1,Math.min(dead.length, Math.floor((W-2*pad)/128)));
  const rows=Math.max(1,Math.ceil(dead.length/cols));
- const rowH=Math.min(96,Math.max(38,(H-top-footReserve)/rows));
- dead.forEach((o,i)=>{
-  const r=Math.floor(i/cols),c=i%cols,inRow=Math.min(cols,dead.length-r*cols),rowW=inRow*cell;
-  const startX=pad+(avail-rowW)/2+cell/2;
-  o.homeX=startX+c*cell;o.homeY=top+r*rowH+rowH*0.5;o.x=o.homeX;o.y=o.homeY;o.vx=0;o.settle=true;
- });
- const wPad=76, wTop=headReserve, wBot=sinkY()-34, n=Math.max(live.length,1);
- live.forEach((o,i)=>{
-  const slotW=(W-2*wPad)/n; o.homeX=wPad+slotW*(i+0.5); o.slotHalf=slotW*0.38;
-  o.homeY=wTop+o.bandFrac*(wBot-wTop); o.x=o.homeX; o.y=o.homeY; o.settle=false;
- });
- const shrink=W<520?0.68:1;
- fishes.forEach(o=>{o.dispSize=o.size*shrink;});
+ const rowH=Math.min(78,Math.max(46,(H-top-30)/rows)), cell=(W-2*pad)/cols;
+ fossils=dead.map((f,i)=>{const r=Math.floor(i/cols),c=i%cols;
+  return {f,x:pad+cell*(c+0.5),y:top+r*rowH+rowH*0.5,size:f.kind==='shipwreck'?20:Math.max(12,Math.min(22,13+Math.abs(f.sharpe||0)*10)),ph:Math.random()*6.28};});
 }
 
-function bakeGrain(){grain=[];const n=Math.floor(W*H/2600);
- for(let i=0;i<n;i++)grain.push([Math.random()*W,Math.random()*H,rnd(.35,1.05),rnd(.03,.09)]);}
-function bakeKelp(){kelp=[];const n=Math.max(4,Math.floor(W/170));
- for(let i=0;i<n;i++)kelp.push({x:(i+0.5)*(W/n)+rnd(-30,30),h:rnd(58,104),ph:Math.random()*6.28,leaves:5+Math.floor(rnd(0,3))});}
-function bakeBubbles(){bubbles=[];const n=Math.floor(W*sinkY()/26000);
- for(let i=0;i<n;i++)bubbles.push({x:rnd(40,W-40),r:rnd(1,2.6),sp:rnd(14,26),off:rnd(0,4000),ph:Math.random()*6.28});}
+// ---- 持续孵化的鱼苗(循环真实假说,活的竞争过程) ----
+let fry=[], lastSpawn=0, spawnIdx=0;
+const SPAWN_MS=1100;
+function spawnFry(seedX){
+ if(!FISH.length)return;
+ const f=FISH[spawnIdx%FISH.length]; spawnIdx++;
+ const startX=(seedX==null)?hatchX()+rnd(-6,6):seedX;
+ fry.push({f,x:startX,y:hatchY()+rnd(-14,14),
+  size:rnd(6,9), vx:rnd(0.5,0.9), phase:Math.random()*6.28,
+  stage:(seedX!=null&&seedX>W*0.30)?'judge':'swim',
+  targetY:(f.kind==='alive'?rnd(liveTop(),liveBot()):f.kind==='pending'?rnd(liveBot(),compTop()):rnd(sedTop()+20,H-40)),
+  alpha:(seedX==null)?0:1});
+}
+// 开屏预置几条正在游的鱼苗,一打开就是活池(非空池等孵化)
+let seeded=false;
+function seedPool(){seeded=true;for(let i=0;i<4;i++)spawnFry(hatchX()+40+i*(W*0.12));}
 
-function bakeBackground(){
+function bakeBg(){
  bg=document.createElement('canvas');bg.width=W*DPR;bg.height=H*DPR;
  const g=bg.getContext('2d');g.setTransform(DPR,0,0,DPR,0,0);
- const grad=g.createLinearGradient(0,0,0,H);
- grad.addColorStop(0,'#F6EFD8');grad.addColorStop(0.42,'#EBDCB4');grad.addColorStop(0.585,'#D8C296');
- grad.addColorStop(0.586,'#B99A72');grad.addColorStop(0.82,'#93725036');grad.addColorStop(1,'#7c5d3f');
- // 深水段需不透明,重刷
- g.fillStyle=grad;g.fillRect(0,0,W,H);
- g.fillStyle='#93724f';g.fillRect(0,sinkY(),W,H-sinkY());
- const g2=g.createLinearGradient(0,sinkY(),0,H);
- g2.addColorStop(0,'#B99A72');g2.addColorStop(1,'#7c5d3f');g.fillStyle=g2;g.fillRect(0,sinkY(),W,H-sinkY());
+ // 水体渐变:表层亮→深水暗(沉积层单独铺)
+ g.fillStyle='#EDE0BC';g.fillRect(0,0,W,H);
+ const grad2=g.createLinearGradient(0,0,0,sedTop());
+ grad2.addColorStop(0,'#F6EFD8');grad2.addColorStop(0.5,'#E7D6AE');grad2.addColorStop(1,'#D3BE8E');
+ g.fillStyle=grad2;g.fillRect(0,0,W,sedTop());
  // 纸纹颗粒
- grain.forEach(([x,y,r,a])=>{g.beginPath();g.arc(x,y,r,0,6.2832);g.fillStyle=`rgba(22,50,74,${a})`;g.fill();});
- // 边角做旧渐晕
- const vg=g.createRadialGradient(W*0.5,H*0.45,Math.min(W,H)*0.25,W*0.5,H*0.45,Math.max(W,H)*0.75);
- vg.addColorStop(0,'rgba(74,54,36,0)');vg.addColorStop(1,'rgba(74,54,36,.20)');
- g.fillStyle=vg;g.fillRect(0,0,W,H);
- // 等深线(水域,纯装饰)
- g.strokeStyle='rgba(22,50,74,.16)';
- for(let k=0;k<4;k++){g.lineWidth=1+k*0.15;g.setLineDash(k%2?[6,5]:[]);
-  g.beginPath();for(let x=0;x<=W;x+=10){const y=110+k*((sinkY()-140)/4)+Math.sin(x/210+k*1.3)*10;
-   x===0?g.moveTo(x,y):g.lineTo(x,y);}g.stroke();}
- g.setLineDash([]);
- // 大罗盘(水域装饰,避开左上HUD区)
- const rx=W*0.865, ry=Math.min(H*0.30, sinkY()-90), R=54;
- g.save();g.translate(rx,ry);g.strokeStyle='rgba(22,50,74,.4)';g.lineWidth=1;
- g.beginPath();g.arc(0,0,R,0,6.2832);g.stroke();
- g.beginPath();g.arc(0,0,R*0.62,0,6.2832);g.stroke();
- for(let i=0;i<16;i++){const a=i*Math.PI/8,len=(i%4===0)?9:(i%2===0?6:3.5);
-  g.beginPath();g.moveTo(Math.cos(a)*R,Math.sin(a)*R);g.lineTo(Math.cos(a)*(R+len),Math.sin(a)*(R+len));g.stroke();}
- for(let i=0;i<8;i++){const a=i*Math.PI/4,tip=R*0.94,base=R*0.22;
-  g.beginPath();g.moveTo(Math.cos(a)*tip,Math.sin(a)*tip);
-  g.lineTo(Math.cos(a+0.34)*base,Math.sin(a+0.34)*base);
-  g.lineTo(Math.cos(a)*base*0.5,Math.sin(a)*base*0.5);
-  g.lineTo(Math.cos(a-0.34)*base,Math.sin(a-0.34)*base);g.closePath();
-  g.fillStyle=(i%2===0)?'rgba(22,50,74,.55)':'rgba(22,50,74,.16)';g.fill();}
- g.beginPath();g.arc(0,-R*0.94,3.4,0,6.2832);g.fillStyle='#8f2c1e';g.fill();
- g.font="9px 'Courier New',monospace";g.fillStyle='rgba(22,50,74,.6)';g.textAlign='center';
- g.fillText('N',0,-R-13);g.fillText('S',0,R+16);g.fillText('E',R+11,4);g.fillText('W',-R-11,4);
- g.restore();
- // 图廓双线边框+四角十字标记+刻度
- const m=11;g.strokeStyle='rgba(22,50,74,.42)';g.lineWidth=1.4;g.strokeRect(m,m,W-2*m,H-2*m);
+ for(let i=0;i<W*H/2600;i++){g.beginPath();g.arc(Math.random()*W,Math.random()*H,rnd(.3,1),0,6.2832);g.fillStyle='rgba(22,50,74,'+rnd(.03,.08)+')';g.fill();}
+ // 等深线(水体)
+ g.strokeStyle='rgba(22,50,74,.10)';
+ for(let k=0;k<4;k++){g.lineWidth=1;g.beginPath();for(let x=0;x<=W;x+=10){const y=90+k*((sedTop()-120)/4)+Math.sin(x/200+k*1.3)*8;x===0?g.moveTo(x,y):g.lineTo(x,y);}g.stroke();}
+ // 罗盘(右上水体,避开HUD)
+ const rx=W*0.88, ry=Math.min(H*0.28,sedTop()-100), R=44;
+ g.save();g.translate(rx,ry);g.strokeStyle='rgba(22,50,74,.34)';g.lineWidth=1;
+ g.beginPath();g.arc(0,0,R,0,6.2832);g.stroke();g.beginPath();g.arc(0,0,R*0.6,0,6.2832);g.stroke();
+ for(let i=0;i<8;i++){const a=i*Math.PI/4,tip=R*0.92,base=R*0.2;
+  g.beginPath();g.moveTo(Math.cos(a)*tip,Math.sin(a)*tip);g.lineTo(Math.cos(a+0.32)*base,Math.sin(a+0.32)*base);
+  g.lineTo(Math.cos(a-0.32)*base,Math.sin(a-0.32)*base);g.closePath();
+  g.fillStyle=(i%2===0)?'rgba(22,50,74,.48)':'rgba(22,50,74,.14)';g.fill();}
+ g.beginPath();g.arc(0,-R*0.92,3,0,6.2832);g.fillStyle='#8f2c1e';g.fill();g.restore();
+ // 沉积层地层带
+ const strataN=5;
+ for(let i=0;i<strataN;i++){const yy=sedTop()+(H-sedTop())*(i/strataN);
+  const shade=['#C9B27E','#C3AA73','#BC9F66','#B4965b','#AC8d52'][i];
+  g.fillStyle=shade;g.fillRect(0,yy,W,(H-sedTop())/strataN+1);
+  g.strokeStyle='rgba(74,54,36,.18)';g.lineWidth=1;g.setLineDash([7,5]);
+  g.beginPath();g.moveTo(0,yy);for(let x=0;x<=W;x+=14)g.lineTo(x,yy+Math.sin(x/90+i)*2);g.stroke();g.setLineDash([]);}
+ // 沉积层与水体分界+标注
+ g.strokeStyle='rgba(74,54,36,.4)';g.lineWidth=1.4;g.beginPath();g.moveTo(0,sedTop());g.lineTo(W,sedTop());g.stroke();
+ g.font="10px 'Courier New',monospace";g.fillStyle='rgba(74,54,36,.6)';g.textAlign='center';
+ g.fillText('—  化石沉积层 · 已判死假说的地质记录（世界变了可重投重测）  —',W/2,sedTop()+16);
+ // 竞争流区标注 + 八门测深戳
+ g.textAlign='left';g.fillStyle='rgba(22,50,74,.42)';g.font="10px 'Courier New',monospace";
+ g.fillText('八门竞争流 SOUNDINGS',W*0.12,compTop()-6);
+ for(let i=0;i<8;i++){const gx=W*0.34+i*Math.min(46,(W*0.5)/8),gy=(compTop()+compBot())/2;
+  g.beginPath();g.arc(gx,gy,7,0,6.2832);g.fillStyle=(i<5)?'rgba(143,44,30,.55)':'rgba(91,111,124,0)';
+  g.fill();g.strokeStyle='rgba(91,111,124,.5)';g.setLineDash(i<5?[]:[3,3]);g.lineWidth=1.1;g.stroke();g.setLineDash([]);}
+ // 存活栖息区标注
+ g.fillStyle='rgba(22,50,74,.30)';g.fillText('存活候选栖息区（当前 0 · 等真 edge 游进来）',W*0.12,liveTop()+14);
+ // 孵化池标注
+ g.fillStyle='rgba(138,90,28,.7)';g.font="11px 'Palatino Linotype',serif";g.textAlign='center';
+ g.fillText('孵化池',hatchX(),hatchY()-40);
+ g.font="8px 'Courier New',monospace";g.fillStyle='rgba(138,90,28,.55)';g.fillText('SPAWNING',hatchX(),hatchY()-28);
+ // 图廓边框
+ const m=11;g.strokeStyle='rgba(22,50,74,.4)';g.lineWidth=1.3;g.strokeRect(m,m,W-2*m,H-2*m);
  g.lineWidth=0.6;g.strokeRect(m+5,m+5,W-2*m-10,H-2*m-10);
- [[m,m],[W-m,m],[m,H-m],[W-m,H-m]].forEach(([x,y])=>{g.beginPath();
-  g.moveTo(x-8,y);g.lineTo(x+8,y);g.moveTo(x,y-8);g.lineTo(x,y+8);g.stroke();});
- g.lineWidth=0.7;
- for(let x=m+90;x<W-m;x+=95){g.beginPath();g.moveTo(x,m);g.lineTo(x,m+6);g.moveTo(x,H-m);g.lineTo(x,H-m-6);g.stroke();}
- for(let y=m+90;y<H-m;y+=95){g.beginPath();g.moveTo(m,y);g.lineTo(m+6,y);g.moveTo(W-m,y);g.lineTo(W-m-6,y);g.stroke();}
- // 海沟分隔线+标签
- g.setLineDash([6,5]);g.strokeStyle='rgba(143,44,30,.45)';g.lineWidth=1.1;
- g.beginPath();g.moveTo(m+4,sinkY());g.lineTo(W-m-4,sinkY());g.stroke();g.setLineDash([]);
- g.font="11px 'Courier New',monospace";g.fillStyle='rgba(143,44,30,.62)';g.textAlign='center';
- g.fillText('—  GRAVEYARD TRENCH · 搁浅标本海沟  —',W/2,sinkY()+18);
 }
 
-function drawKelp(t){
- ctx.strokeStyle='rgba(74,54,36,.4)';ctx.lineWidth=2.2;
- kelp.forEach(k=>{ctx.beginPath();ctx.moveTo(k.x,sinkY());
-  for(let i=1;i<=6;i++){const yy=sinkY()-k.h*(i/6),sway=Math.sin(t/1400+k.ph+i*0.5)*8*(i/6);
-   ctx.lineTo(k.x+sway,yy);}
-  ctx.stroke();});
-}
-function drawBubbles(t){
- ctx.fillStyle='rgba(22,50,74,.22)';
- bubbles.forEach(b=>{const cy=sinkY()-((t*0.02*(b.sp/20)+b.off)%(sinkY()-60));
-  const bx=b.x+Math.sin(t/900+b.ph)*7;
-  ctx.beginPath();ctx.arc(bx,cy,b.r,0,6.2832);ctx.fill();});
-}
-
-function drawTag(o){
- const f=o.f,y=o.y+o.dispSize*0.62+15;
- ctx.font="11px 'Palatino Linotype',Palatino,serif";ctx.textAlign='center';
- ctx.fillStyle=o.settle?'rgba(15,35,51,.85)':COL[f.kind];
- ctx.fillText(f.name,o.x,y);
- if(o.settle){const w=ctx.measureText(f.name).width;
-  ctx.strokeStyle='rgba(22,50,74,.28)';ctx.lineWidth=0.6;
-  ctx.beginPath();ctx.moveTo(o.x-w/2-8,y+5);ctx.lineTo(o.x+w/2+8,y+5);ctx.stroke();
-  ctx.beginPath();ctx.arc(o.x-w/2-8,y+5,1.6,0,6.2832);ctx.fillStyle=ACC;ctx.fill();}
-}
-
-function resize(){
- DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;
- cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
- bakeGrain();bakeKelp();bakeBubbles();bakeBackground();layout();
-}
+function resize(){DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);layoutFossils();bakeBg();}
 window.addEventListener('resize',resize);resize();
-
-function fishIcons(){
- [['swAlive',INK],['swDead',ACC],['swPending',OCH]].forEach(([id,col])=>{
-  const cc=document.createElement('canvas');cc.width=64;cc.height=40;
-  const cx=cc.getContext('2d');cx.translate(30,20);cx.scale(1,1);
-  paintFish(cx,15,col===ACC?'dead':(col===OCH?'pending':'alive'),false);
-  document.getElementById(id).src=cc.toDataURL();});
-}
-fishIcons();
 
 let mx=-1,my=-1;
 cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
 cv.addEventListener('mouseleave',()=>{mx=-1;my=-1;tip.style.opacity=0;});
 
+function drawHatchery(t){
+ const hx=hatchX(),hy=hatchY();
+ // 苗圃圈
+ ctx.strokeStyle='rgba(138,90,28,.4)';ctx.lineWidth=1.2;ctx.setLineDash([4,4]);
+ ctx.beginPath();ctx.ellipse(hx,hy,30,40,0,0,6.2832);ctx.stroke();ctx.setLineDash([]);
+ // 鱼卵脉动
+ for(let i=0;i<7;i++){const a=i/7*6.2832,pr=1+Math.sin(t/500+i)*0.25;
+  const ex=hx+Math.cos(a)*16,ey=hy+Math.sin(a)*22;
+  ctx.beginPath();ctx.arc(ex,ey,3.2*pr,0,6.2832);ctx.fillStyle='rgba(143,44,30,.5)';ctx.fill();
+  ctx.strokeStyle='rgba(138,90,28,.5)';ctx.lineWidth=0.8;ctx.stroke();}
+ // 气泡上浮
+ for(let i=0;i<5;i++){const by=hy-((t*0.03+i*70)%160);ctx.beginPath();ctx.arc(hx+Math.sin(t/700+i)*10,by,rnd(1,1.6),0,6.2832);ctx.fillStyle='rgba(22,50,74,.18)';ctx.fill();}
+}
+
+function fossilTip(f){return f.sharpe==null?('真账户体检 · '+(f.note||'')+(f.pf!=null?'<br>真成交 PF='+f.pf:'')):
+ ('样本外夏普 '+f.sharpe+'<br>OOS 样本 '+f.oos+(f.p!=null?'<br>打赢null p='+f.p:'')+(f.mdd!=null?'<br>回撤 '+(f.mdd*100).toFixed(0)+'%':''));}
+
 function tick(t){
+ t0=t;
+ if(!seeded&&W>0){seedPool();lastSpawn=t;}   // 布局就绪后再预置,保证坐标有效
  ctx.drawImage(bg,0,0,W,H);
- drawBubbles(t);drawKelp(t);
+ drawHatchery(t);
  let hover=null;
- for(const o of fishes){
-  if(!o.settle){
-   o.x+=o.dir*o.vx;
-   if(o.x>o.homeX+o.slotHalf){o.dir=-1;} if(o.x<o.homeX-o.slotHalf){o.dir=1;}
-   o.y=o.homeY+Math.sin(t/650*o.swayA+o.phase)*4;
-  }
-  ctx.save();ctx.translate(o.x,o.y);
-  const wreck=o.f.kind==='shipwreck', sunk=o.f.kind==='dead';
-  ctx.scale(o.dir, sunk?-1:1);
-  if(sunk)ctx.rotate(-0.09); if(wreck)ctx.rotate(-0.16);
-  if(wreck)paintWreck(ctx,o.dispSize); else paintFish(ctx,o.dispSize,o.f.kind,o.settle);
+ // 化石(固定沉积)
+ for(const o of fossils){
+  ctx.save();ctx.translate(o.x,o.y+Math.sin(t/1600+o.ph)*1.2);ctx.scale(-1,1);
+  drawFishShape(ctx,o.size,'rgba(74,54,36,.55)','rgba(154,138,106,.32)',0.9,o.ph);
+  // 化石纹(细横纹)
+  ctx.globalAlpha=0.4;ctx.strokeStyle='rgba(74,54,36,.4)';ctx.lineWidth=0.5;
+  for(let k=-1;k<=1;k++){ctx.beginPath();ctx.moveTo(-o.size*0.5,k*o.size*0.2);ctx.lineTo(o.size*0.5,k*o.size*0.2);ctx.stroke();}
   ctx.restore();
-  drawTag(o);
-  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.dispSize*1.35)hover=o;
+  ctx.globalAlpha=1;ctx.fillStyle='rgba(74,54,36,.72)';ctx.font="10px 'Palatino Linotype',serif";ctx.textAlign='center';
+  ctx.fillText(o.f.name,o.x,o.y+o.size*0.5+13);ctx.textAlign='left';
+  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.size*1.4)hover={f:o.f,x:o.x,y:o.y};
  }
+ // 孵化循环(基于真实时间戳,与帧率无关)
+ if(t-lastSpawn>SPAWN_MS){lastSpawn=t;spawnFry();}
+ for(const o of fry){
+  o.alpha=Math.min(1,o.alpha+0.02);
+  o.phase+=0.2;
+  if(o.stage==='swim'){o.x+=o.vx;o.y+=(o.targetY-o.y)*0.006+Math.sin(t/400+o.phase)*0.3;
+   if(o.x>W*0.30){o.stage='judge';}}
+  else if(o.stage==='judge'){o.x+=o.vx*0.6;
+   if(o.x>W*0.62){o.stage=(o.f.kind==='alive')?'live':'sink';}}
+  else if(o.stage==='live'){o.x+=o.vx*0.5;o.y+=(o.targetY-o.y)*0.02;if(o.x>W-40){o.dead=true;}}
+  else if(o.stage==='sink'){o.y+=1.1;o.x+=o.vx*0.3;o.alpha-=0.012;if(o.y>sedTop()||o.alpha<=0){o.dead=true;}}
+  const col=o.f.kind==='alive'?INK:o.f.kind==='pending'?OCH:ACC;
+  ctx.save();ctx.translate(o.x,o.y);ctx.scale(1,1);
+  drawFishShape(ctx,o.size,col,null,o.alpha*(o.stage==='sink'?o.alpha:0.92),o.phase);
+  ctx.restore();
+  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.size*1.5)hover={f:o.f,x:o.x,y:o.y};
+ }
+ fry=fry.filter(o=>!o.dead);
+ // 洋流细线(世界在动)
+ ctx.strokeStyle='rgba(22,50,74,.05)';ctx.lineWidth=1;
+ for(let k=0;k<3;k++){ctx.beginPath();for(let x=0;x<=W;x+=12){const y=liveTop()+k*40+Math.sin(x/120+t/1200+k)*6;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();}
  if(hover){const f=hover.f;
-  tip.innerHTML='<div class="tn">'+f.name+'</div><div class="tm">'+
-   (f.sharpe==null?('真账户体检 · '+(f.note||'')+(f.pf!=null?'<br>真成交 PF='+f.pf:'')):
-    ('样本外夏普 '+f.sharpe+'<br>OOS 样本 '+f.oos+(f.p!=null?'<br>打赢null p='+f.p:'')+(f.mdd!=null?'<br>回撤 '+(f.mdd*100).toFixed(0)+'%':'')))+
-   '<br>裁决：'+(f.kind==='alive'?'★ 候选存活':f.kind==='pending'?'◌ 样本不足未决':'✕ 判死沉海沟')+'</div>';
-  tip.style.left=Math.min(mx+14,W-236)+'px';tip.style.top=(my+14)+'px';tip.style.opacity=1;
+  tip.innerHTML='<div class="tn">'+f.name+'</div><div class="tm">'+fossilTip(f)+
+   '<br>裁决：'+(f.kind==='alive'?'★ 候选存活':f.kind==='pending'?'◌ 样本不足未决':'✕ 判死→化石沉积')+'</div>';
+  tip.style.left=Math.min(hover.x+14,W-236)+'px';tip.style.top=Math.max(60,hover.y-10)+'px';tip.style.opacity=1;
  } else tip.style.opacity=0;
  requestAnimationFrame(tick);
 }
