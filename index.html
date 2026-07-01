@@ -3,127 +3,339 @@
 <meta name="robots" content="noindex,nofollow">
 <title>怒涛 ForexTank · Nereus Chart Room</title>
 <style>
-:root{--bg:#F2EAD6;--surf:#FBF5E6;--prim:#163A52;--acc:#9E3320;--acc2:#9A5A18;--text:#1A2B38;--dim:#4C6072}
+:root{--bg:#EFE4C4;--surf:#FBF6E9;--prim:#16324a;--ink:#0f2333;--acc:#8f2c1e;--acc2:#8a5a1c;
+ --dim:#5b6f7c;--gold:#a9863a}
 *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow:hidden}
-body{background:#F2EAD6;color:var(--text);font-family:'Hoefler Text','Palatino Linotype',Palatino,Georgia,'Songti SC',serif}
+body{background:var(--bg);color:var(--ink);font-family:'Hoefler Text','Palatino Linotype',Palatino,Georgia,'Songti SC',serif}
 .mono{font-family:'Courier Prime','Courier New',ui-monospace,Menlo,monospace}
 #sea{position:fixed;inset:0;width:100%;height:100%;display:block}
-.hud{position:fixed;left:0;right:0;top:0;display:flex;align-items:flex-start;gap:14px;padding:14px 18px;z-index:10;pointer-events:none}
-.brand h1{font-size:30px;font-weight:600;letter-spacing:2px;color:var(--prim);line-height:1}
-.brand .lat{font-size:8px;letter-spacing:2px;color:var(--dim);margin-top:4px}
-.brand .sub{font-size:11px;color:var(--acc2);font-style:italic;margin-top:4px}
+.card{background:var(--surf);border:1px solid rgba(22,50,74,.38);
+ box-shadow:inset 0 0 0 1px rgba(255,252,240,.6),0 8px 20px rgba(22,50,74,.16);}
+.hud{position:fixed;left:14px;right:14px;top:12px;z-index:10;display:flex;align-items:center;
+ gap:16px;padding:10px 18px;pointer-events:none}
+.brandmark{flex:none}
+.brand h1{font-size:27px;font-weight:600;letter-spacing:3px;color:var(--prim);line-height:1}
+.brand .lat{font-size:8px;letter-spacing:2px;color:var(--dim);margin-top:5px}
+.rule{width:100%;height:1px;background:linear-gradient(90deg,var(--prim),transparent 70%);margin-top:5px;opacity:.4}
+.brand .sub{font-size:10.5px;color:var(--acc2);font-style:italic;margin-top:5px}
 .spacer{flex:1}
-.tr{text-align:right;font-size:9px;color:var(--dim);line-height:1.7}
-.verdict{display:inline-block;border:1.4px solid var(--acc);background:rgba(158,51,32,.05);padding:5px 11px;margin-top:5px}
-.verdict .v{font-size:13px;color:var(--acc);letter-spacing:1px}
-.foot{position:fixed;left:0;right:0;bottom:0;padding:11px 18px 14px;z-index:10;pointer-events:none;
- background:linear-gradient(0deg,rgba(242,234,214,.92),transparent)}
-.sound{display:flex;align-items:center;gap:7px;font-size:9px;letter-spacing:1px;color:var(--dim)}
-.stamp{width:16px;height:16px;border-radius:50%;border:1.3px dashed var(--dim);display:inline-block}
+.meta{text-align:right;font-size:9px;color:var(--dim);line-height:1.8}
+.seal{display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:4px 12px 4px 5px;
+ background:rgba(143,44,30,.06);border:1px solid rgba(143,44,30,.4)}
+.seal .dot{width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b8492f,#7a2216 78%);
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.seal .v{font-size:12px;color:var(--acc);letter-spacing:.5px}
+.foot{position:fixed;left:14px;right:14px;bottom:12px;z-index:10;padding:11px 18px;
+ display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.frow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:10px;color:var(--dim)}
+.frow.sep{border-top:1px solid rgba(22,50,74,.16);padding-top:8px}
+.swimg{width:22px;height:14px;display:inline-block;vertical-align:middle;margin-right:6px}
+.sound{display:flex;align-items:center;gap:6px}
+.stamp{width:15px;height:15px;border-radius:50%;border:1.3px dashed var(--dim);display:inline-block}
 .stamp.on{background:var(--acc);border:1.3px solid var(--acc)}
-.legend{display:flex;gap:16px;margin-top:7px;font-size:10px;color:var(--dim);flex-wrap:wrap}
-.legend i{width:18px;height:8px;display:inline-block;vertical-align:middle;margin-right:4px;border-radius:2px}
-.ledger{font-size:9px;color:var(--dim);margin-top:5px}
-#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:30;max-width:230px;
- background:var(--surf);border:1px solid var(--prim);border-radius:4px;padding:8px 11px;font-size:11px;box-shadow:0 6px 18px rgba(22,58,82,.22)}
-#tip .tn{font-size:13px;color:var(--prim);font-weight:600;margin-bottom:3px}
-#tip .tm{font-family:'Courier New',monospace;font-size:10px;color:var(--dim);line-height:1.5}
-@media(max-width:640px){.brand h1{font-size:22px}.brand .sub{display:none}.legend{font-size:9px;gap:9px}}
+.k{color:var(--prim);font-weight:600}
+#tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;z-index:30;max-width:220px;
+ background:var(--surf);border:1px solid var(--prim);border-left:3px solid var(--acc);padding:8px 12px;
+ font-size:11px;box-shadow:0 8px 22px rgba(22,50,74,.26)}
+#tip .tn{font-size:13px;color:var(--prim);font-weight:600;margin-bottom:4px}
+#tip .tm{font-family:'Courier New',monospace;font-size:10px;color:var(--dim);line-height:1.55}
+@media(max-width:680px){.brand h1{font-size:20px}.brand .sub{display:none}.meta{display:none}
+ .frow{font-size:8.5px;gap:12px}}
 </style></head><body>
 <canvas id="sea"></canvas>
 
-<div class="hud">
- <svg width="50" height="50" viewBox="0 0 50 50" style="flex:none">
-  <circle cx="25" cy="25" r="22" fill="none" stroke="#163A52" stroke-width="1.2"/>
-  <circle cx="25" cy="25" r="14" fill="none" stroke="#163A52" stroke-width="0.5"/>
-  <g stroke="#163A52" stroke-width="0.5"><line x1="25" y1="3" x2="25" y2="47"/><line x1="3" y1="25" x2="47" y2="25"/><line x1="10" y1="10" x2="40" y2="40"/><line x1="40" y1="10" x2="10" y2="40"/></g>
-  <path d="M25 5 L28 25 L25 22 L22 25 Z" fill="#9E3320"/><circle cx="25" cy="25" r="2.2" fill="#9A5A18"/></svg>
- <div class="brand"><h1>怒涛</h1><div class="lat mono">FOREXTANK · NEREUS CHART ROOM</div>
-  <div class="sub">反过拟合外汇研究鱼缸 — 默认存疑，过八道测深才放行</div></div>
+<div class="hud card">
+ <svg class="brandmark" width="46" height="46" viewBox="0 0 46 46">
+  <circle cx="23" cy="23" r="20" fill="none" stroke="#16324a" stroke-width="1.1"/>
+  <circle cx="23" cy="23" r="12.5" fill="none" stroke="#16324a" stroke-width="0.5"/>
+  <g stroke="#16324a" stroke-width="0.5"><line x1="23" y1="4" x2="23" y2="42"/><line x1="4" y1="23" x2="42" y2="23"/>
+   <line x1="9.5" y1="9.5" x2="36.5" y2="36.5"/><line x1="36.5" y1="9.5" x2="9.5" y2="36.5"/></g>
+  <path d="M23 6 L26 23 L23 20.3 L20 23 Z" fill="#8f2c1e"/><circle cx="23" cy="23" r="2" fill="#8a5a1c"/>
+ </svg>
+ <div class="brand"><h1>怒 涛</h1><div class="lat mono">FOREXTANK · NEREUS CHART ROOM</div>
+  <div class="rule"></div><div class="sub">反过拟合外汇研究鱼缸 — 默认存疑，过八道测深才放行</div></div>
  <div class="spacer"></div>
- <div class="tr mono">CHART No.01 · SNAPSHOT 2026-07-01 04:09<br>7 majors · GBP EUR JPY AUD CAD CHF NZD
-  <div class="verdict"><span class="v mono">VERDICT: edge unproven — hold</span></div></div>
+ <div class="meta mono">CHART No.01 · SNAPSHOT 2026-07-01 21:17<br>7 majors + 4 EM · G10 CTA carry momentum
+  <div class="seal"><span class="dot"></span><span class="v mono">VERDICT&nbsp;edge unproven — hold</span></div>
+ </div>
 </div>
 
-<div class="foot">
- <div class="sound mono">SOUNDINGS · 八道测深戳 &nbsp;<span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>&nbsp; 5/8</div>
- <div class="legend mono"><span><i style="background:#163A52"></i>候选存活 0</span><span><i style="background:#9E3320"></i>判死沉海沟 9</span><span><i style="background:#9A5A18"></i>样本不足未决</span><span>钢笔素描鱼=因子鱼苗·大小∝|夏普|·悬停查看</span></div>
- <div class="ledger mono">鱼缸自循环 3 代运转 · 纸面账本 0 条 · K_total=26 append-only哈希链 · 只含因子研究数据零账户数字 · 真钱实盘本人手动</div>
+<div class="foot card">
+ <div class="frow">
+  <span><img class="swimg" id="swAlive"> 候选存活 <b class="k">0</b></span>
+  <span><img class="swimg" id="swDead"> 判死沉海沟 <b class="k">9</b></span>
+  <span><img class="swimg" id="swPending"> 样本不足未决 <b class="k">1</b></span>
+  <span class="mono">鱼形=因子鱼苗 · 大小∝|夏普| · 悬停查看细节</span>
+ </div>
+ <div class="frow sep">
+  <div class="sound mono">SOUNDINGS·八道测深戳&nbsp;
+   <span class="stamp on"></span><span class="stamp on"></span><span class="stamp on"></span>
+   <span class="stamp on"></span><span class="stamp on"></span><span class="stamp"></span>
+   <span class="stamp"></span><span class="stamp"></span>&nbsp;5/8</div>
+  <span class="mono">鱼缸自循环 <b class="k">3</b> 代运转 · 纸面账本 <b class="k">0</b> 条</span>
+  <span class="mono">K_total=<b class="k">26</b> append-only哈希链</span>
+  <span class="mono" style="color:var(--dim)">只含因子研究数据·零账户数字·真钱实盘本人手动</span>
+ </div>
 </div>
 <div id="tip"></div>
 
 <script>
-const FISH=[{"name": "ChanEA 实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量·二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry 利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry·控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}, {"name": "EM carry", "kind": "dead", "sharpe": -0.0098, "oos": 2016, "p": 0.2781, "mdd": -0.3574}, {"name": "时序趋势CTA", "kind": "dead", "sharpe": -0.488, "oos": 2016, "p": 1.0, "mdd": -0.2131}];
+const FISH=[{"name": "ChanEA实盘", "kind": "shipwreck", "sharpe": null, "oos": 44, "p": null, "note": "真账户体检·搁浅标本", "pf": 0.45919571560116423}, {"name": "动量·单对", "kind": "pending", "sharpe": 0.4211, "oos": 5, "p": 0.2259, "mdd": -0.0198}, {"name": "横截面动量", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.0033, "mdd": -0.4462}, {"name": "横截面动量二代", "kind": "dead", "sharpe": -0.8823, "oos": 2016, "p": 0.005, "mdd": -0.4462}, {"name": "短期反转", "kind": "dead", "sharpe": -0.8911, "oos": 2016, "p": 0.005, "mdd": -0.4862}, {"name": "低波动", "kind": "dead", "sharpe": -0.561, "oos": 2016, "p": 0.005, "mdd": -0.3368}, {"name": "carry利差", "kind": "dead", "sharpe": -0.6095, "oos": 1890, "p": 0.005, "mdd": -0.3253}, {"name": "carry控波动", "kind": "dead", "sharpe": -0.6153, "oos": 1890, "p": 0.0083, "mdd": -0.4767}, {"name": "EM carry", "kind": "dead", "sharpe": -0.0098, "oos": 2016, "p": 0.2781, "mdd": -0.3574}, {"name": "时序趋势CTA", "kind": "dead", "sharpe": -0.488, "oos": 2016, "p": 1.0, "mdd": -0.2131}];
 const cv=document.getElementById('sea'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
-let W,H,DPR;
-function resize(){DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
-window.addEventListener('resize',resize);resize();
-const COL={alive:'#163A52',dead:'#9E3320',pending:'#9A5A18',shipwreck:'#5a3a20'};
+const INK='#16324a', ACC='#8f2c1e', OCH='#8a5a1c', DIM='#5b6f7c';
+const COL={alive:INK,dead:ACC,pending:OCH,shipwreck:'#4a3624'};
+let W,H,DPR,bg,grain=[],kelp=[],bubbles=[];
 function rnd(a,b){return a+Math.random()*(b-a);}
-// 每条鱼一个体:按 kind 决定泳层(候选中上、未决中、判死沉海沟底)
-const sink=()=>H*0.74; // 海沟带顶
-const fishes=FISH.map((f,i)=>{
- const big=f.sharpe==null?22:Math.max(11,Math.min(30,14+Math.abs(f.sharpe)*14));
- const band=f.kind==='alive'?rnd(0.28,0.45):f.kind==='pending'?rnd(0.42,0.6):rnd(0.78,0.93);
- return {f,x:rnd(0.1,0.9)*W||120,y:band*H,vx:(f.kind==='dead'||f.kind==='shipwreck')?rnd(0.15,0.4):rnd(0.4,1.0),
-   dir:Math.random()<0.5?1:-1,ph:Math.random()*6.28,size:big,band:band,bob:rnd(0.6,1.4)};
-});
+function sinkY(){return H*0.585;}
+
+// ---- 通用平滑闭合路径:经过控制点的圆润轮廓(用于鱼身/尾鳍/藻叶) ----
+function smoothClosed(c,pts){
+ const n=pts.length,mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+ let m0=mid(pts[n-1],pts[0]); c.moveTo(m0[0],m0[1]);
+ for(let i=0;i<n;i++){const cur=pts[i],nxt=pts[(i+1)%n],m=mid(cur,nxt);c.quadraticCurveTo(cur[0],cur[1],m[0],m[1]);}
+}
+const BODY=[[1.05,0],[0.90,-0.20],[0.52,-0.36],[0.08,-0.47],[-0.32,-0.43],[-0.70,-0.24],[-0.93,-0.09],
+ [-1.02,0],[-0.93,0.09],[-0.70,0.24],[-0.32,0.40],[0.08,0.43],[0.52,0.31],[0.90,0.14]];
+
+function paintFish(c,s,kind,settle){
+ const ink=COL[kind]==='#4a3624'?'#4a3624':INK, tone=COL[kind], faded=(kind==='pending');
+ c.save();
+ // 阴影(纸感投影,非发光)
+ c.shadowColor='rgba(22,50,74,.18)';c.shadowBlur=6;c.shadowOffsetY=3;
+ c.beginPath();smoothClosed(c,BODY.map(p=>[p[0]*s,p[1]*s]));
+ c.fillStyle=tone+'1c';c.fill();
+ c.shadowColor='transparent';
+ if(faded)c.setLineDash([s*0.09,s*0.07]);
+ c.lineWidth=Math.max(1,s*0.055);c.strokeStyle=ink;c.globalAlpha=faded?0.72:1;c.stroke();
+ c.setLineDash([]);
+ // 背部明暗雕版短线(仅背脊上部)
+ c.save();c.beginPath();smoothClosed(c,BODY.map(p=>[p[0]*s,p[1]*s]));c.clip();
+ c.strokeStyle=ink;c.globalAlpha=0.22;c.lineWidth=Math.max(0.5,s*0.02);
+ for(let i=0;i<6;i++){const x0=(0.62-i*0.16)*s;c.beginPath();c.moveTo(x0,-0.44*s);c.lineTo(x0-0.10*s,-0.08*s);c.stroke();}
+ // 鳞纹(中段,行列错位小弧)
+ c.globalAlpha=0.30;c.lineWidth=Math.max(0.5,s*0.018);
+ for(let row=-1;row<=1;row++){const yy=row*0.16*s;
+  for(let cx=-0.55;cx<0.45;cx+=0.135){const xx=cx*s+(row%2?0.06*s:0);
+   c.beginPath();c.arc(xx,yy,s*0.075,Math.PI*0.15,Math.PI*0.85);c.stroke();}}
+ c.restore();
+ // 鳃线
+ c.globalAlpha=faded?0.6:0.85;c.lineWidth=Math.max(1,s*0.045);c.strokeStyle=ink;
+ c.beginPath();c.moveTo(0.60*s,-0.14*s);c.quadraticCurveTo(0.70*s,0,0.60*s,0.18*s);c.stroke();
+ // 胸鳍
+ c.beginPath();c.moveTo(0.38*s,0.10*s);c.quadraticCurveTo(0.14*s,0.30*s,0.06*s,0.52*s);
+ c.quadraticCurveTo(0.30*s,0.38*s,0.44*s,0.20*s);c.closePath();
+ c.fillStyle=tone+'26';c.fill();c.lineWidth=Math.max(0.8,s*0.035);c.stroke();
+ // 背鳍(帆状)
+ c.beginPath();c.moveTo(-0.36*s,-0.40*s);c.quadraticCurveTo(-0.30*s,-0.92*s,-0.06*s,-0.98*s);
+ c.quadraticCurveTo(0.02*s,-0.60*s,0.06*s,-0.40*s);c.closePath();
+ c.fillStyle=tone+'26';c.fill();c.stroke();
+ c.globalAlpha*=0.7;c.lineWidth=Math.max(0.5,s*0.02);
+ c.beginPath();c.moveTo(-0.30*s,-0.42*s);c.lineTo(-0.14*s,-0.90*s);c.stroke();
+ c.beginPath();c.moveTo(-0.14*s,-0.42*s);c.lineTo(-0.02*s,-0.85*s);c.stroke();
+ c.globalAlpha=faded?0.6:0.85;
+ // 尾鳍(叉形,略摆动由外部旋转体现)
+ c.beginPath();c.moveTo(-0.98*s,0);c.quadraticCurveTo(-1.25*s,-0.10*s,-1.52*s,-0.44*s);
+ c.quadraticCurveTo(-1.20*s,-0.16*s,-1.05*s,-0.02*s);c.closePath();c.fillStyle=tone+'26';c.fill();c.stroke();
+ c.beginPath();c.moveTo(-0.98*s,0);c.quadraticCurveTo(-1.25*s,0.10*s,-1.52*s,0.44*s);
+ c.quadraticCurveTo(-1.20*s,0.16*s,-1.05*s,0.02*s);c.closePath();c.fill();c.stroke();
+ // 眼
+ c.globalAlpha=1;c.fillStyle='rgba(255,252,240,.9)';c.beginPath();c.arc(0.66*s,-0.15*s,0.10*s,0,6.2832);c.fill();
+ c.lineWidth=Math.max(0.8,s*0.035);c.strokeStyle=ink;c.stroke();
+ c.fillStyle=ink;c.beginPath();c.arc(0.685*s,-0.15*s,0.045*s,0,6.2832);c.fill();
+ c.fillStyle='rgba(255,252,240,.95)';c.beginPath();c.arc(0.70*s,-0.185*s,0.018*s,0,6.2832);c.fill();
+ if(kind==='dead'){c.strokeStyle=ACC;c.lineWidth=Math.max(1,s*0.05);
+  c.beginPath();c.moveTo(0.44*s,-0.30*s);c.lineTo(0.66*s,0.02*s);c.moveTo(0.66*s,-0.30*s);c.lineTo(0.44*s,0.02*s);c.stroke();}
+ c.restore();
+}
+
+function paintWreck(c,s){
+ const HULL=[[1.15,0.05],[0.85,-0.30],[0.30,-0.34],[-0.05,-0.20],[-0.45,-0.10],[-0.85,-0.06],
+  [-0.95,0.20],[-0.55,0.52],[0.15,0.56],[0.65,0.44],[1.02,0.24]];
+ const dk='#241a10';
+ c.save();c.shadowColor='rgba(22,50,74,.28)';c.shadowBlur=8;c.shadowOffsetY=4;
+ // 搁浅淤沙(垫在船体下,加强触地感)
+ c.beginPath();c.ellipse(0,0.56*s,0.95*s,0.14*s,0,0,6.2832);c.fillStyle='rgba(22,50,74,.14)';c.fill();
+ c.beginPath();smoothClosed(c,HULL.map(p=>[p[0]*s,p[1]*s]));c.fillStyle='rgba(246,239,216,.20)';c.fill();
+ c.shadowColor='transparent';c.lineWidth=s*0.055;c.strokeStyle=dk;c.stroke();
+ c.globalAlpha=.55;c.lineWidth=s*0.02;
+ for(let i=0;i<3;i++){c.beginPath();c.moveTo(-0.7*s+i*0.55*s,-0.02*s);c.lineTo(-0.7*s+i*0.55*s,0.42*s);c.stroke();}
+ c.globalAlpha=1;
+ [[0.55,0.10],[0.15,0.16],[-0.25,0.20]].forEach(p=>{c.beginPath();c.arc(p[0]*s,p[1]*s,0.06*s,0,6.2832);
+  c.fillStyle='rgba(22,50,74,.85)';c.fill();c.lineWidth=s*0.022;c.strokeStyle=dk;c.stroke();});
+ // 断桅
+ c.beginPath();c.moveTo(-0.15*s,-0.22*s);c.lineTo(-0.58*s,-1.42*s);c.lineWidth=s*0.055;c.strokeStyle=dk;c.stroke();
+ c.beginPath();c.moveTo(-0.58*s,-1.42*s);c.quadraticCurveTo(-0.22*s,-1.14*s,-0.32*s,-0.78*s);
+ c.quadraticCurveTo(-0.53*s,-0.99*s,-0.58*s,-1.42*s);c.closePath();
+ c.fillStyle='rgba(143,44,30,.30)';c.fill();c.strokeStyle='#8f2c1e';c.lineWidth=s*0.03;c.stroke();
+ c.restore();
+}
+
+function initFish(){
+ return FISH.map(f=>{
+  const size=f.kind==='shipwreck'?34:Math.max(13,Math.min(27,13+Math.abs(f.sharpe||0)*15));
+  return {f,size,bandFrac:Math.random(),phase:Math.random()*6.28,swayA:rnd(0.6,1.3),
+   dir:Math.random()<0.5?1:-1,vx:rnd(0.22,0.5),x:0,y:0,homeX:0,homeY:0,slotHalf:40,settle:false};
+ });
+}
+let fishes=initFish();
+
+function layout(){
+ const dead=fishes.filter(o=>o.f.kind==='dead'||o.f.kind==='shipwreck');
+ const live=fishes.filter(o=>o.f.kind==='alive'||o.f.kind==='pending');
+ const footEl=document.querySelector('.foot'), hudEl=document.querySelector('.hud');
+ const footReserve=(footEl?footEl.offsetHeight:90)+26;
+ const headReserve=(hudEl?hudEl.offsetHeight:90)+28;
+ const pad=Math.min(56,W*0.06), top=sinkY()+42, cell=Math.max(92,Math.min(148,W/4.6));
+ const avail=Math.max(cell,W-2*pad);
+ const cols=Math.max(1,Math.min(dead.length||1,Math.floor(avail/cell)));
+ const rows=Math.max(1,Math.ceil(dead.length/cols));
+ const rowH=Math.min(96,Math.max(38,(H-top-footReserve)/rows));
+ dead.forEach((o,i)=>{
+  const r=Math.floor(i/cols),c=i%cols,inRow=Math.min(cols,dead.length-r*cols),rowW=inRow*cell;
+  const startX=pad+(avail-rowW)/2+cell/2;
+  o.homeX=startX+c*cell;o.homeY=top+r*rowH+rowH*0.5;o.x=o.homeX;o.y=o.homeY;o.vx=0;o.settle=true;
+ });
+ const wPad=76, wTop=headReserve, wBot=sinkY()-34, n=Math.max(live.length,1);
+ live.forEach((o,i)=>{
+  const slotW=(W-2*wPad)/n; o.homeX=wPad+slotW*(i+0.5); o.slotHalf=slotW*0.38;
+  o.homeY=wTop+o.bandFrac*(wBot-wTop); o.x=o.homeX; o.y=o.homeY; o.settle=false;
+ });
+ const shrink=W<520?0.68:1;
+ fishes.forEach(o=>{o.dispSize=o.size*shrink;});
+}
+
+function bakeGrain(){grain=[];const n=Math.floor(W*H/2600);
+ for(let i=0;i<n;i++)grain.push([Math.random()*W,Math.random()*H,rnd(.35,1.05),rnd(.03,.09)]);}
+function bakeKelp(){kelp=[];const n=Math.max(4,Math.floor(W/170));
+ for(let i=0;i<n;i++)kelp.push({x:(i+0.5)*(W/n)+rnd(-30,30),h:rnd(58,104),ph:Math.random()*6.28,leaves:5+Math.floor(rnd(0,3))});}
+function bakeBubbles(){bubbles=[];const n=Math.floor(W*sinkY()/26000);
+ for(let i=0;i<n;i++)bubbles.push({x:rnd(40,W-40),r:rnd(1,2.6),sp:rnd(14,26),off:rnd(0,4000),ph:Math.random()*6.28});}
+
+function bakeBackground(){
+ bg=document.createElement('canvas');bg.width=W*DPR;bg.height=H*DPR;
+ const g=bg.getContext('2d');g.setTransform(DPR,0,0,DPR,0,0);
+ const grad=g.createLinearGradient(0,0,0,H);
+ grad.addColorStop(0,'#F6EFD8');grad.addColorStop(0.42,'#EBDCB4');grad.addColorStop(0.585,'#D8C296');
+ grad.addColorStop(0.586,'#B99A72');grad.addColorStop(0.82,'#93725036');grad.addColorStop(1,'#7c5d3f');
+ // 深水段需不透明,重刷
+ g.fillStyle=grad;g.fillRect(0,0,W,H);
+ g.fillStyle='#93724f';g.fillRect(0,sinkY(),W,H-sinkY());
+ const g2=g.createLinearGradient(0,sinkY(),0,H);
+ g2.addColorStop(0,'#B99A72');g2.addColorStop(1,'#7c5d3f');g.fillStyle=g2;g.fillRect(0,sinkY(),W,H-sinkY());
+ // 纸纹颗粒
+ grain.forEach(([x,y,r,a])=>{g.beginPath();g.arc(x,y,r,0,6.2832);g.fillStyle=`rgba(22,50,74,${a})`;g.fill();});
+ // 边角做旧渐晕
+ const vg=g.createRadialGradient(W*0.5,H*0.45,Math.min(W,H)*0.25,W*0.5,H*0.45,Math.max(W,H)*0.75);
+ vg.addColorStop(0,'rgba(74,54,36,0)');vg.addColorStop(1,'rgba(74,54,36,.20)');
+ g.fillStyle=vg;g.fillRect(0,0,W,H);
+ // 等深线(水域,纯装饰)
+ g.strokeStyle='rgba(22,50,74,.16)';
+ for(let k=0;k<4;k++){g.lineWidth=1+k*0.15;g.setLineDash(k%2?[6,5]:[]);
+  g.beginPath();for(let x=0;x<=W;x+=10){const y=110+k*((sinkY()-140)/4)+Math.sin(x/210+k*1.3)*10;
+   x===0?g.moveTo(x,y):g.lineTo(x,y);}g.stroke();}
+ g.setLineDash([]);
+ // 大罗盘(水域装饰,避开左上HUD区)
+ const rx=W*0.865, ry=Math.min(H*0.30, sinkY()-90), R=54;
+ g.save();g.translate(rx,ry);g.strokeStyle='rgba(22,50,74,.4)';g.lineWidth=1;
+ g.beginPath();g.arc(0,0,R,0,6.2832);g.stroke();
+ g.beginPath();g.arc(0,0,R*0.62,0,6.2832);g.stroke();
+ for(let i=0;i<16;i++){const a=i*Math.PI/8,len=(i%4===0)?9:(i%2===0?6:3.5);
+  g.beginPath();g.moveTo(Math.cos(a)*R,Math.sin(a)*R);g.lineTo(Math.cos(a)*(R+len),Math.sin(a)*(R+len));g.stroke();}
+ for(let i=0;i<8;i++){const a=i*Math.PI/4,tip=R*0.94,base=R*0.22;
+  g.beginPath();g.moveTo(Math.cos(a)*tip,Math.sin(a)*tip);
+  g.lineTo(Math.cos(a+0.34)*base,Math.sin(a+0.34)*base);
+  g.lineTo(Math.cos(a)*base*0.5,Math.sin(a)*base*0.5);
+  g.lineTo(Math.cos(a-0.34)*base,Math.sin(a-0.34)*base);g.closePath();
+  g.fillStyle=(i%2===0)?'rgba(22,50,74,.55)':'rgba(22,50,74,.16)';g.fill();}
+ g.beginPath();g.arc(0,-R*0.94,3.4,0,6.2832);g.fillStyle='#8f2c1e';g.fill();
+ g.font="9px 'Courier New',monospace";g.fillStyle='rgba(22,50,74,.6)';g.textAlign='center';
+ g.fillText('N',0,-R-13);g.fillText('S',0,R+16);g.fillText('E',R+11,4);g.fillText('W',-R-11,4);
+ g.restore();
+ // 图廓双线边框+四角十字标记+刻度
+ const m=11;g.strokeStyle='rgba(22,50,74,.42)';g.lineWidth=1.4;g.strokeRect(m,m,W-2*m,H-2*m);
+ g.lineWidth=0.6;g.strokeRect(m+5,m+5,W-2*m-10,H-2*m-10);
+ [[m,m],[W-m,m],[m,H-m],[W-m,H-m]].forEach(([x,y])=>{g.beginPath();
+  g.moveTo(x-8,y);g.lineTo(x+8,y);g.moveTo(x,y-8);g.lineTo(x,y+8);g.stroke();});
+ g.lineWidth=0.7;
+ for(let x=m+90;x<W-m;x+=95){g.beginPath();g.moveTo(x,m);g.lineTo(x,m+6);g.moveTo(x,H-m);g.lineTo(x,H-m-6);g.stroke();}
+ for(let y=m+90;y<H-m;y+=95){g.beginPath();g.moveTo(m,y);g.lineTo(m+6,y);g.moveTo(W-m,y);g.lineTo(W-m-6,y);g.stroke();}
+ // 海沟分隔线+标签
+ g.setLineDash([6,5]);g.strokeStyle='rgba(143,44,30,.45)';g.lineWidth=1.1;
+ g.beginPath();g.moveTo(m+4,sinkY());g.lineTo(W-m-4,sinkY());g.stroke();g.setLineDash([]);
+ g.font="11px 'Courier New',monospace";g.fillStyle='rgba(143,44,30,.62)';g.textAlign='center';
+ g.fillText('—  GRAVEYARD TRENCH · 搁浅标本海沟  —',W/2,sinkY()+18);
+}
+
+function drawKelp(t){
+ ctx.strokeStyle='rgba(74,54,36,.4)';ctx.lineWidth=2.2;
+ kelp.forEach(k=>{ctx.beginPath();ctx.moveTo(k.x,sinkY());
+  for(let i=1;i<=6;i++){const yy=sinkY()-k.h*(i/6),sway=Math.sin(t/1400+k.ph+i*0.5)*8*(i/6);
+   ctx.lineTo(k.x+sway,yy);}
+  ctx.stroke();});
+}
+function drawBubbles(t){
+ ctx.fillStyle='rgba(22,50,74,.22)';
+ bubbles.forEach(b=>{const cy=sinkY()-((t*0.02*(b.sp/20)+b.off)%(sinkY()-60));
+  const bx=b.x+Math.sin(t/900+b.ph)*7;
+  ctx.beginPath();ctx.arc(bx,cy,b.r,0,6.2832);ctx.fill();});
+}
+
+function drawTag(o){
+ const f=o.f,y=o.y+o.dispSize*0.62+15;
+ ctx.font="11px 'Palatino Linotype',Palatino,serif";ctx.textAlign='center';
+ ctx.fillStyle=o.settle?'rgba(15,35,51,.85)':COL[f.kind];
+ ctx.fillText(f.name,o.x,y);
+ if(o.settle){const w=ctx.measureText(f.name).width;
+  ctx.strokeStyle='rgba(22,50,74,.28)';ctx.lineWidth=0.6;
+  ctx.beginPath();ctx.moveTo(o.x-w/2-8,y+5);ctx.lineTo(o.x+w/2+8,y+5);ctx.stroke();
+  ctx.beginPath();ctx.arc(o.x-w/2-8,y+5,1.6,0,6.2832);ctx.fillStyle=ACC;ctx.fill();}
+}
+
+function resize(){
+ DPR=window.devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;
+ cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+ bakeGrain();bakeKelp();bakeBubbles();bakeBackground();layout();
+}
+window.addEventListener('resize',resize);resize();
+
+function fishIcons(){
+ [['swAlive',INK],['swDead',ACC],['swPending',OCH]].forEach(([id,col])=>{
+  const cc=document.createElement('canvas');cc.width=64;cc.height=40;
+  const cx=cc.getContext('2d');cx.translate(30,20);cx.scale(1,1);
+  paintFish(cx,15,col===ACC?'dead':(col===OCH?'pending':'alive'),false);
+  document.getElementById(id).src=cc.toDataURL();});
+}
+fishIcons();
+
 let mx=-1,my=-1;
-cv.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
 cv.addEventListener('mouseleave',()=>{mx=-1;my=-1;tip.style.opacity=0;});
 
-function drawBg(){
- ctx.fillStyle='#F2EAD6';ctx.fillRect(0,0,W,H);
- // 经纬网格
- ctx.strokeStyle='rgba(22,58,82,.07)';ctx.lineWidth=1;
- for(let x=0;x<W;x+=46){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
- for(let y=0;y<H;y+=46){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
- // 等深线弧
- ctx.strokeStyle='rgba(22,58,82,.13)';ctx.lineWidth=1;
- for(let k=1;k<=3;k++){ctx.beginPath();for(let x=0;x<=W;x+=8){const y=H*(0.2*k)+Math.sin(x/180+k)*14;x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.stroke();}
- // 海沟(墓地带)
- ctx.fillStyle='rgba(22,58,82,.06)';ctx.fillRect(0,sink(),W,H-sink());
- ctx.strokeStyle='rgba(158,51,32,.35)';ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(0,sink());ctx.lineTo(W,sink());ctx.stroke();ctx.setLineDash([]);
- ctx.fillStyle='rgba(158,51,32,.5)';ctx.font="10px 'Courier New',monospace";ctx.fillText('— GRAVEYARD TRENCH · 搁浅标本海沟 —',16,sink()+15);
-}
-function drawFish(o,t){
- const f=o.f,dead=f.kind==='dead'||f.kind==='shipwreck';
- ctx.save();ctx.translate(o.x,o.y+Math.sin(t/600*o.bob+o.ph)*4);ctx.scale(o.dir,dead?-1:1);
- const s=o.size,col=COL[f.kind];
- ctx.strokeStyle=col;ctx.fillStyle='rgba(0,0,0,0)';ctx.lineWidth=1.3;ctx.globalAlpha=f.kind==='pending'?0.6:0.95;
- // 身体(博物图鉴椭圆)
- ctx.beginPath();ctx.ellipse(0,0,s,s*0.5,0,0,6.2832);ctx.stroke();
- // 尾(摆动)
- const sw=Math.sin(t/180+o.ph)*s*0.25;
- ctx.beginPath();ctx.moveTo(-s*0.9,0);ctx.lineTo(-s*1.5,-s*0.4+sw);ctx.lineTo(-s*1.5,s*0.4+sw);ctx.closePath();ctx.stroke();
- // 背鳍/腹鳍
- ctx.beginPath();ctx.moveTo(s*0.1,-s*0.5);ctx.lineTo(-s*0.2,-s*0.85);ctx.lineTo(-s*0.45,-s*0.5);ctx.stroke();
- // 鱼身测深细线(解剖/海图感)
- ctx.lineWidth=0.6;for(let k=-2;k<=2;k++){ctx.beginPath();ctx.moveTo(s*0.55,k*s*0.13);ctx.lineTo(-s*0.4,k*s*0.13);ctx.stroke();}
- // 眼
- ctx.lineWidth=1.1;ctx.beginPath();ctx.arc(s*0.55,-s*0.12,s*0.09,0,6.2832);ctx.stroke();
- ctx.fillStyle=col;ctx.beginPath();ctx.arc(s*0.55,-s*0.12,s*0.04,0,6.2832);ctx.fill();
- // 判死叉号
- if(dead){ctx.strokeStyle=col;ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(s*0.45,-s*0.25);ctx.lineTo(s*0.65,0.02);ctx.moveTo(s*0.65,-s*0.25);ctx.lineTo(s*0.45,0.02);ctx.stroke();}
- ctx.restore();ctx.globalAlpha=1;
- // 标签
- ctx.fillStyle=col;ctx.font="11px 'Palatino Linotype',Palatino,serif";ctx.textAlign='center';
- ctx.fillText(f.name,o.x,o.y+o.size*0.5+15);ctx.textAlign='left';
-}
 function tick(t){
- drawBg();let hover=null;
+ ctx.drawImage(bg,0,0,W,H);
+ drawBubbles(t);drawKelp(t);
+ let hover=null;
  for(const o of fishes){
-  o.x+=o.dir*o.vx; if(o.x>W-20){o.dir=-1;} if(o.x<20){o.dir=1;}
-  const tgt=o.band*H; o.y+=(tgt-o.y)*0.01;
-  drawFish(o,t);
-  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.size*1.3)hover=o;
+  if(!o.settle){
+   o.x+=o.dir*o.vx;
+   if(o.x>o.homeX+o.slotHalf){o.dir=-1;} if(o.x<o.homeX-o.slotHalf){o.dir=1;}
+   o.y=o.homeY+Math.sin(t/650*o.swayA+o.phase)*4;
+  }
+  ctx.save();ctx.translate(o.x,o.y);
+  const wreck=o.f.kind==='shipwreck', sunk=o.f.kind==='dead';
+  ctx.scale(o.dir, sunk?-1:1);
+  if(sunk)ctx.rotate(-0.09); if(wreck)ctx.rotate(-0.16);
+  if(wreck)paintWreck(ctx,o.dispSize); else paintFish(ctx,o.dispSize,o.f.kind,o.settle);
+  ctx.restore();
+  drawTag(o);
+  if(mx>=0&&Math.hypot(mx-o.x,my-o.y)<o.dispSize*1.35)hover=o;
  }
  if(hover){const f=hover.f;
   tip.innerHTML='<div class="tn">'+f.name+'</div><div class="tm">'+
    (f.sharpe==null?('真账户体检 · '+(f.note||'')+(f.pf!=null?'<br>真成交 PF='+f.pf:'')):
     ('样本外夏普 '+f.sharpe+'<br>OOS 样本 '+f.oos+(f.p!=null?'<br>打赢null p='+f.p:'')+(f.mdd!=null?'<br>回撤 '+(f.mdd*100).toFixed(0)+'%':'')))+
    '<br>裁决：'+(f.kind==='alive'?'★ 候选存活':f.kind==='pending'?'◌ 样本不足未决':'✕ 判死沉海沟')+'</div>';
-  tip.style.left=Math.min(mx+14,W-240)+'px';tip.style.top=(my+14)+'px';tip.style.opacity=1;
+  tip.style.left=Math.min(mx+14,W-236)+'px';tip.style.top=(my+14)+'px';tip.style.opacity=1;
  } else tip.style.opacity=0;
  requestAnimationFrame(tick);
 }
